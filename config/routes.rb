@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     sessions: 'sessions',
     registrations: 'registrations'
   }
+
+  namespace :api, defaults: { format: :json } do
+      get '/profile', to: "profile#show"
+  end
 end
