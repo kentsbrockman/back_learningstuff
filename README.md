@@ -3,12 +3,12 @@
 ##### Can be used with the [associated React frontend](https://github.com/cha-fa/react_boilerplate)
 
 ## Description
-Ruby '2.7.1'  
-Rails '6.1.3'  
-PostgreSQL '12.6'  
-Devise-jwt '0.7.0' (Allowlist Revocation Strategy)  
-Rspec-rails '4.0.2'  
-Factory_bot_rails '6.1'  
+* Ruby '2.7.1'  
+* Rails '6.1.3'  
+* PostgreSQL '12.6'  
+* Devise-jwt '0.7.0' (Allowlist Revocation Strategy)  
+* Rspec-rails '4.0.2'  
+* Factory_bot_rails '6.1'  
 
 
 ## Usage
