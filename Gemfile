@@ -32,11 +32,14 @@ gem 'warden-jwt_auth', '0.4.2'
 gem 'fast_jsonapi'
 gem 'dotenv-rails'
 
-# image upload
-gem 'image_processing'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails', '~> 4.0.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :test do
+  gem 'factory_bot_rails', '~> 6.1'
 end
 
 group :development do

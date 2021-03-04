@@ -14,7 +14,7 @@ class ApplicationController < ActionController::API
           status: '400',
           title: 'Bad Request',
           detail: resource.errors,
-          code: '100'
+          code: '400'
         }
       ]
     }, status: :bad_request
