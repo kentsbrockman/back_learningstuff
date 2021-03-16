@@ -11,4 +11,3 @@ class SessionsController < Devise::SessionsController
     head :no_content
   end
 end
-

@@ -25,7 +25,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
-# authentication
+# Authentication
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'devise-jwt', '~> 0.7.0'
 gem 'warden-jwt_auth', '0.4.2'
@@ -33,10 +33,13 @@ gem 'fast_jsonapi'
 gem 'dotenv', '~> 2.7', '>= 2.7.6'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 
+# Prettier for clean code purpose
+gem 'prettier', '~> 1.5', '>= 1.5.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 4.0.2'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :test do
@@ -45,9 +48,10 @@ end
 
 group :development do
   gem 'listen', '~> 3.3'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

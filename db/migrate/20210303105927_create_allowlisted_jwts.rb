@@ -3,6 +3,7 @@ class CreateAllowlistedJwts < ActiveRecord::Migration[6.1]
     create_table :allowlisted_jwts do |t|
       t.string :jti, null: false
       t.string :aud
+
       # If you want to leverage the `aud` claim, add to it a `NOT NULL` constraint:
       # t.string :aud, null: false
       t.datetime :exp, null: false

@@ -129,6 +129,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.3)
+    prettier (1.5.3)
     puma (5.2.2)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -225,6 +226,7 @@ DEPENDENCIES
   fast_jsonapi
   listen (~> 3.3)
   pg (~> 1.1)
+  prettier (~> 1.5, >= 1.5.3)
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.3)
