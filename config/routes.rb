@@ -15,7 +15,7 @@ Rails
                  registrations: 'registrations'
                }
 
-    resources :users, only: [:show] do
+    resources :users, only: [:show], defaults: { format: :json } do
       resources :avatars, only: [:create]
     end
 
