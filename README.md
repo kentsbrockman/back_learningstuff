@@ -2,8 +2,6 @@
 
 ##### Can be used with the [associated React frontend](https://github.com/cha-fa/react_boilerplate)
 
----
-
 ## Description
 * Ruby '2.7.1'  
 * Rails '6.1.3'  
