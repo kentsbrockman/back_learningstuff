@@ -118,9 +118,13 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.5)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -207,6 +211,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -214,7 +219,8 @@ DEPENDENCIES
   byebug
   devise (~> 4.7, >= 4.7.3)
   devise-jwt (~> 0.7.0)
-  dotenv-rails
+  dotenv (~> 2.7, >= 2.7.6)
+  dotenv-rails (~> 2.7, >= 2.7.6)
   factory_bot_rails (~> 6.1)
   fast_jsonapi
   listen (~> 3.3)

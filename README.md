@@ -13,8 +13,9 @@
 
 ## Usage
 
-Clone this repository  
-Generate a secret key `rails secret`  
+Clone this repository
+`$ cd back_learningstuff` 
+Generate a secret key `$ rails secret`
 Create a .env with `DEVISE_JWT_SECRET_KEY="yoursecretkey"`    
 `bundle install`  
 `rails db:create db:migrate`  
