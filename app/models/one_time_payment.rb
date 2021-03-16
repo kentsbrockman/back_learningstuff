@@ -1,0 +1,2 @@
+class OneTimePayment < ApplicationRecord
+end
