@@ -1,4 +1,4 @@
-class Stripe::OnetimepaymentsController < ApplicationController
+class Stripe::OneTimePaymentsController < ApplicationController
 
   def new
     @total = params[:total].to_d
@@ -12,8 +12,8 @@ class Stripe::OnetimepaymentsController < ApplicationController
           quantity: 1
         },
       ],
-      success_url: stripe_onetimepayments_success_url + '?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: stripe_onetimepayments_cancel_url
+      success_url: stripe_one_time_payments_success_url + '?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: stripe_one_time_payments_cancel_url
     )
 
     puts @session
