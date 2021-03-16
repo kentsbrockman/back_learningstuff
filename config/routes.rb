@@ -20,7 +20,7 @@ Rails
     end
 
     namespace :stripe do
-      resources :onetimepayments
+      resources :onetimepayments, only: [:new, :create]
       get 'onetimepayment/success', to: 'onetimepayments#success', as: 'onetimepayments_success'
       get 'onetimepayment/cancel', to: 'onetimepayments#cancel', as: 'onetimepayments_cancel'
     end

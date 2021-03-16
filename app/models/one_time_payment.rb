@@ -1,2 +1,0 @@
-class OneTimePayment < ApplicationRecord
-end

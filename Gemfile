@@ -36,6 +36,9 @@ gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 # Prettier for clean code purpose
 gem 'prettier', '~> 1.5', '>= 1.5.3'
 
+# Stripe for processing payments on the platform
+gem 'stripe', '~> 5.30'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 4.0.2'
