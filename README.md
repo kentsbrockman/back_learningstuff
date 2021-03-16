@@ -13,12 +13,12 @@
 
 ## Usage
 
-Clone this repository
-`$ cd back_learningstuff` 
-Generate a secret key `$ rails secret`
-Create a .env with `DEVISE_JWT_SECRET_KEY="yoursecretkey"`    
-`bundle install`  
-`rails db:create db:migrate`  
-`rails server`  
-Your app will be running on `http://localhost:8080`  
+- Clone this repository
+- `$ cd back_learningstuff` 
+- Generate a secret key `$ rails secret`
+- Create a .env with `DEVISE_JWT_SECRET_KEY="yoursecretkey"`    
+- `bundle install`  
+- `rails db:create db:migrate`  
+- `rails server`  
+- Your app will be running on `http://localhost:8080`  
 
