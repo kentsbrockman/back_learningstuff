@@ -10,32 +10,158 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_105927) do
+ActiveRecord::Schema.define(version: 2021_03_16_172613) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'allowlisted_jwts', force: :cascade do |t|
-    t.string 'jti', null: false
-    t.string 'aud'
-    t.datetime 'exp', null: false
-    t.bigint 'user_id', null: false
-    t.index ['jti'], name: 'index_allowlisted_jwts_on_jti', unique: true
-    t.index ['user_id'], name: 'index_allowlisted_jwts_on_user_id'
+  create_table "allowlisted_jwts", force: :cascade do |t|
+    t.string "jti", null: false
+    t.string "aud"
+    t.datetime "exp", null: false
+    t.bigint "user_id", null: false
+    t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
+    t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['reset_password_token'],
-            name: 'index_users_on_reset_password_token',
-            unique: true
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.text "content"
+    t.boolean "is_correct", default: false
+    t.text "explanation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  add_foreign_key 'allowlisted_jwts', 'users', on_delete: :cascade
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories_learning_paths", id: false, force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "learning_path_id", null: false
+  end
+
+  create_table "chapters", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.integer "position"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_chapters_on_course_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_comments_on_lesson_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "courses_learning_paths", id: false, force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "learning_path_id", null: false
+  end
+
+  create_table "learning_paths", force: :cascade do |t|
+    t.string "title"
+    t.integer "price_in_cents"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lesson_contents", force: :cascade do |t|
+    t.text "text"
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_lesson_contents_on_lesson_id"
+  end
+
+  create_table "lesson_videos", force: :cascade do |t|
+    t.string "url"
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_lesson_videos_on_lesson_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.bigint "chapter_id", null: false
+    t.integer "position"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chapter_id"], name: "index_lessons_on_chapter_id"
+  end
+
+  create_table "lessons_progress_states", id: false, force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "progress_state_id", null: false
+  end
+
+  create_table "progress_states", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "subscription_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_progress_states_on_course_id"
+    t.index ["subscription_id"], name: "index_progress_states_on_subscription_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.integer "position"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_questions_on_lesson_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "learning_path_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["learning_path_id"], name: "index_subscriptions_on_learning_path_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
+  add_foreign_key "answers", "questions"
+  add_foreign_key "chapters", "courses"
+  add_foreign_key "comments", "lessons"
+  add_foreign_key "comments", "users"
+  add_foreign_key "lesson_contents", "lessons"
+  add_foreign_key "lesson_videos", "lessons"
+  add_foreign_key "lessons", "chapters"
+  add_foreign_key "progress_states", "courses"
+  add_foreign_key "progress_states", "subscriptions"
+  add_foreign_key "questions", "lessons"
+  add_foreign_key "subscriptions", "learning_paths"
+  add_foreign_key "subscriptions", "users"
 end

@@ -8,4 +8,6 @@ class User < ApplicationRecord
          :registerable,
          :jwt_authenticatable,
          jwt_revocation_strategy: self
+
+  has_many :subscriptions
 end
