@@ -9,5 +9,16 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: self
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :role, presence: true
+
   has_many :subscriptions
+
+  enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
+
+  scope :approved, -> { where(is_approved: true) }
+  scope :students, -> { where(role: 'student') }
+  scope :teachers, -> { where(role: 'teacher') }
+  scope :admins, -> { where(role: 'admin') }
 end

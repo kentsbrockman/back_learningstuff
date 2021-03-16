@@ -18,4 +18,10 @@ Rails
     namespace :api, defaults: { format: :json } do
       get '/profile', to: 'profile#show'
     end
+
+    namespace :stripe do
+      resources :one_time_payments, only: [:new, :create]
+      get 'one_time_payment/success', to: 'one_time_payments#success', as: 'one_time_payments_success'
+      get 'one_time_payment/cancel', to: 'one_time_payments#cancel', as: 'one_time_payments_cancel'
+    end
   end

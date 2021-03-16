@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_172613) do
+ActiveRecord::Schema.define(version: 2021_03_16_185546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,15 @@ ActiveRecord::Schema.define(version: 2021_03_16_172613) do
     t.bigint "progress_state_id", null: false
   end
 
+  create_table "one_time_payments", force: :cascade do |t|
+    t.bigint "subscription_id", null: false
+    t.integer "total_amount", null: false
+    t.string "product_stripe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subscription_id"], name: "index_one_time_payments_on_subscription_id"
+  end
+
   create_table "progress_states", force: :cascade do |t|
     t.bigint "course_id", null: false
     t.bigint "subscription_id", null: false
@@ -147,6 +156,15 @@ ActiveRecord::Schema.define(version: 2021_03_16_172613) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.boolean "is_approved", default: false
+    t.boolean "is_reviewed", default: false
+    t.string "role", default: "student"
+    t.text "description"
+    t.string "linkedin_address"
+    t.string "job"
+    t.string "customer_stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -159,6 +177,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_172613) do
   add_foreign_key "lesson_contents", "lessons"
   add_foreign_key "lesson_videos", "lessons"
   add_foreign_key "lessons", "chapters"
+  add_foreign_key "one_time_payments", "subscriptions"
   add_foreign_key "progress_states", "courses"
   add_foreign_key "progress_states", "subscriptions"
   add_foreign_key "questions", "lessons"
