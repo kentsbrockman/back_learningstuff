@@ -8,11 +8,12 @@ class User < ApplicationRecord
          :registerable,
          :jwt_authenticatable,
          jwt_revocation_strategy: self
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: true
 
-  has_many :subscriptions, foreign_key: 'student_id', class_name: 'Subscription'
+  has_many :subscriptions
 
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
 
