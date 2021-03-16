@@ -15,8 +15,8 @@ Rails
                  registrations: 'registrations'
                }
 
-    namespace :api, defaults: { format: :json } do
-      get '/profile', to: 'profile#show'
+    resources :users, only: [:show] do
+      resources :avatars, only: [:create]
     end
 
     namespace :stripe do
