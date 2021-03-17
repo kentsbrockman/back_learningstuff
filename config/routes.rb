@@ -34,8 +34,6 @@ Rails
     resources :courses, only: [:index, :show] do
       resources :chapters, only: [:index, :show] do
         resources :lessons, only: [:index, :show] do
-          resources :lesson_contents, only: [:index, :show]
-          resources :lesson_videos, only: [:index, :show]
           resources :questions, only: [:index, :show]
           resources :comments
         end

@@ -14,12 +14,14 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1
   def show
-    render json: LessonSerializer.new(@lesson).serializable_hash.to_json
+    render json: {lesson: @lesson, content: @lesson.lesson_content, video: @lesson.lesson_video, question: @lesson.questions, comments: @lesson.comments}
   end
 
   private
+
   def set_lesson
     @lesson = Lesson.find(params[:id])
   end
+
 
 end
