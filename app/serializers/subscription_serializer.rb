@@ -1,6 +1,5 @@
-class SubscriptionSerializer
-  include JSONAPI::Serializer
-  attributes 
+class SubscriptionSerializer < ActiveModel::Serializer 
+  attributes :id 
   has_one :one_time_payment
   belongs_to :user
   belongs_to :learning_path

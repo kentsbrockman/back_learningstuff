@@ -15,11 +15,12 @@ Rails
                  registrations: 'registrations'
                }
 
-    resources :users, only: [:show], defaults: { format: :json } do
+    resources :users, defaults: { format: :json } do
       resources :avatars, only: [:create]
     end
 
-    get '/profile', to: 'users#profile'
+    get '/profile', to: 'users#show'
+    put '/profile', to: 'users#update'
 
     namespace :stripe do
       resources :one_time_payments, only: %i[new create]
@@ -29,5 +30,14 @@ Rails
       get 'one_time_payment/cancel',
           to: 'one_time_payments#cancel',
           as: 'one_time_payments_cancel'
+    end
+
+    resources :courses, only: [:index, :show] do
+      resources :chapters, only: [:index, :show] do
+        resources :lessons, only: [:index, :show] do
+          resources :questions, only: [:index, :show]
+          resources :comments
+        end
+      end
     end
   end

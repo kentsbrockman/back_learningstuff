@@ -33,7 +33,6 @@ gem 'fast_jsonapi'
 gem 'dotenv', '~> 2.7', '>= 2.7.6'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 
-
 #Faker and table_print to inject dummy data in the DB
 gem 'faker', '~> 2.16'
 gem 'table_print', '~> 1.5', '>= 1.5.7'
@@ -67,4 +66,5 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem "jsonapi-serializer", "~> 2.2"
+
+gem "active_model_serializers", "~> 0.10.12"
