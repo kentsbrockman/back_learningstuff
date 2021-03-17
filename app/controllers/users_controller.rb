@@ -5,7 +5,17 @@ class UsersController < ApplicationController
     render json: current_user
   end
 
-  def profile
-    render json: current_user
+  def update
+    if current_user.update(user_params)
+      render json: current_user
+    else
+      render json: current_user.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:profile).permit(:first_name, :last_name, :description, :linkedin_address, :job)
   end
 end
