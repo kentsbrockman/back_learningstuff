@@ -1,16 +1,16 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: %i[show update destroy]
+  before_action :set_answer, only: [:show, :update, :destroy]
 
   # GET /answers
   def index
     @answers = Answer.all
 
-    render json: AnswerSerializer.new(@answers).serializable_hash.to_json
+    render json: @answers
   end
 
   # GET /answers/1
   def show
-    render json: AnswerSerializer.new(@answer).serializable_hash.to_json
+    render json: @answer
   end
 
   # POST /answers
@@ -39,16 +39,13 @@ class AnswersController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_answer
+      @answer = Answer.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_answer
-    @answer = Answer.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def answer_params
-    params
-      .require(:answer)
-      .permit(:question_id, :content, :position, :is_correct, :explanation)
-  end
+    # Only allow a list of trusted parameters through.
+    def answer_params
+      params.require(:answer).permit(:question_id, :content, :position, :is_correct, :explanation)
+    end
 end

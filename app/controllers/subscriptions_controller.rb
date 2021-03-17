@@ -1,16 +1,16 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscription, only: %i[show update destroy]
+  before_action :set_subscription, only: [:show, :update, :destroy]
 
   # GET /subscriptions
   def index
     @subscriptions = Subscription.all
 
-    render json: SubscriptionSerializer.new(@subscriptions).serializable_hash.to_json
+    render json: @subscriptions
   end
 
   # GET /subscriptions/1
   def show
-    render json: SubscriptionSerializer.new(@subscription).serializable_hash.to_json
+    render json: @subscription
   end
 
   # POST /subscriptions
@@ -39,14 +39,13 @@ class SubscriptionsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_subscription
+      @subscription = Subscription.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_subscription
-    @subscription = Subscription.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def subscription_params
-    params.require(:subscription).permit(:user_id, :learning_path_id)
-  end
+    # Only allow a list of trusted parameters through.
+    def subscription_params
+      params.require(:subscription).permit(:user_id, :learning_path_id)
+    end
 end

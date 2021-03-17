@@ -1,16 +1,16 @@
 class LessonContentsController < ApplicationController
-  before_action :set_lesson_content, only: %i[show update destroy]
+  before_action :set_lesson_content, only: [:show, :update, :destroy]
 
   # GET /lesson_contents
   def index
     @lesson_contents = LessonContent.all
 
-    render json: LessonContentSerializer.new(@lesson_contents).serializable_hash.to_json
+    render json: @lesson_contents
   end
 
   # GET /lesson_contents/1
   def show
-    render json: LessonContentSerializer.new(@lesson_content).serializable_hash.to_json
+    render json: @lesson_content
   end
 
   # POST /lesson_contents
@@ -39,14 +39,13 @@ class LessonContentsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_lesson_content
+      @lesson_content = LessonContent.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_lesson_content
-    @lesson_content = LessonContent.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def lesson_content_params
-    params.require(:lesson_content).permit(:text, :lesson_id)
-  end
+    # Only allow a list of trusted parameters through.
+    def lesson_content_params
+      params.require(:lesson_content).permit(:text, :lesson_id)
+    end
 end

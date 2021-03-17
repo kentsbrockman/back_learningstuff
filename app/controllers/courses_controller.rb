@@ -1,16 +1,16 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[show update destroy]
+  before_action :set_course, only: [:show, :update, :destroy]
 
   # GET /courses
   def index
     @courses = Course.all
 
-    render json: CourseSerializer.new(@courses).serializable_hash.to_json
+    render json: @courses
   end
 
   # GET /courses/1
   def show
-    render json: CourseSerializer.new(@course).serializable_hash.to_json
+    render json: @course
   end
 
   # POST /courses
@@ -39,14 +39,13 @@ class CoursesController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_course
+      @course = Course.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_course
-    @course = Course.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def course_params
-    params.require(:course).permit(:title)
-  end
+    # Only allow a list of trusted parameters through.
+    def course_params
+      params.require(:course).permit(:title)
+    end
 end

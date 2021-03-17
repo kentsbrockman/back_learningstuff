@@ -1,16 +1,16 @@
 class LearningPathsController < ApplicationController
-  before_action :set_learning_path, only: %i[show update destroy]
+  before_action :set_learning_path, only: [:show, :update, :destroy]
 
   # GET /learning_paths
   def index
     @learning_paths = LearningPath.all
 
-    render json: LearningPathSerializer.new(@learning_paths).serializable_hash.to_json
+    render json: @learning_paths
   end
 
   # GET /learning_paths/1
   def show
-    render json: LearningPathSerializer.new(@learning_path).serializable_hash.to_json
+    render json: @learning_path
   end
 
   # POST /learning_paths
@@ -39,14 +39,13 @@ class LearningPathsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_learning_path
+      @learning_path = LearningPath.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_learning_path
-    @learning_path = LearningPath.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def learning_path_params
-    params.require(:learning_path).permit(:title, :price_in_cents)
-  end
+    # Only allow a list of trusted parameters through.
+    def learning_path_params
+      params.require(:learning_path).permit(:title, :price_in_cents)
+    end
 end
