@@ -10,7 +10,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1
   def show
-    render json: LessonSerializer.new(@lessons).serializable_hash.to_json
+    render json: LessonSerializer.new(@lesson).serializable_hash.to_json
   end
 
   # POST /lessons
