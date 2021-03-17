@@ -5,12 +5,12 @@ class ChaptersController < ApplicationController
   def index
     @chapters = Chapter.all
 
-    render json: ChapterSerializer.new(@chapters).serializable_hash.to_json
+    render json: @chapters
   end
 
   # GET /chapters/1
   def show
-    render json: ChapterSerializer.new(@chapter).serializable_hash.to_json
+    render json: @chapter
   end
 
   # POST /chapters

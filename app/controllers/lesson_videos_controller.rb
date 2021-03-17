@@ -5,14 +5,12 @@ class LessonVideosController < ApplicationController
   def index
     @lesson_videos = LessonVideo.all
 
-    render json:
-             LessonVideoSerializer.new(@lesson_videos).serializable_hash.to_json
+    render json: @lesson_videos
   end
 
   # GET /lesson_videos/1
   def show
-    render json:
-             LessonVideoSerializer.new(@lesson_video).serializable_hash.to_json
+    render json: @lesson_video
   end
 
   # POST /lesson_videos
