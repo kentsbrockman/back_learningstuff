@@ -1,4 +1,4 @@
 class CategorySerializer < ActiveModel::Serializer 
-  attributes :id,:title
+  attributes :id, :title
   has_many :learning_paths
 end

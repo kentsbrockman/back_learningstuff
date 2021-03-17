@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 class SubscriptionSerializer < ActiveModel::Serializer 
-  attributes :id,
-=======
-class SubscriptionSerializer
-  include JSONAPI::Serializer
-  attributes
->>>>>>> master
+  attributes :id
   has_one :one_time_payment
   belongs_to :user
   belongs_to :learning_path
