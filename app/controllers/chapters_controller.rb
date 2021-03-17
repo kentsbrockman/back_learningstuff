@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter, only: [:show, :update, :destroy]
+  before_action :set_chapter, only: %i[show update destroy]
 
   # GET /chapters
   def index
@@ -39,13 +39,14 @@ class ChaptersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chapter
-      @chapter = Chapter.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def chapter_params
-      params.require(:chapter).permit(:course_id, :position)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_chapter
+    @chapter = Chapter.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def chapter_params
+    params.require(:chapter).permit(:course_id, :position)
+  end
 end

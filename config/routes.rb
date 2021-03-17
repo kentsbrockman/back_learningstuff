@@ -15,13 +15,19 @@ Rails
                  registrations: 'registrations'
                }
 
-    namespace :api, defaults: { format: :json } do
-      get '/profile', to: 'profile#show'
+    resources :users, only: [:show], defaults: { format: :json } do
+      resources :avatars, only: [:create]
     end
 
+    get '/profile', to: 'users#profile'
+
     namespace :stripe do
-      resources :one_time_payments, only: [:new, :create]
-      get 'one_time_payment/success', to: 'one_time_payments#success', as: 'one_time_payments_success'
-      get 'one_time_payment/cancel', to: 'one_time_payments#cancel', as: 'one_time_payments_cancel'
+      resources :one_time_payments, only: %i[new create]
+      get 'one_time_payment/success',
+          to: 'one_time_payments#success',
+          as: 'one_time_payments_success'
+      get 'one_time_payment/cancel',
+          to: 'one_time_payments#cancel',
+          as: 'one_time_payments_cancel'
     end
   end
