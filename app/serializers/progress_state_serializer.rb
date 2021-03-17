@@ -1,6 +1,6 @@
 class ProgressStateSerializer
   include JSONAPI::Serializer
-  attributes 
+  attributes
   belongs_to :course
   belongs_to :subscription
   has_many :lessons
