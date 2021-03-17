@@ -19,6 +19,8 @@ Rails
       resources :avatars, only: [:create]
     end
 
+    get '/profile', to: 'users#profile'
+
     namespace :stripe do
       resources :one_time_payments, only: %i[new create]
       get 'one_time_payment/success',
