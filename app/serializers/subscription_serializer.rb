@@ -1,6 +1,6 @@
 class SubscriptionSerializer
   include JSONAPI::Serializer
-  attributes 
+  attributes
   has_one :one_time_payment
   belongs_to :user
   belongs_to :learning_path
