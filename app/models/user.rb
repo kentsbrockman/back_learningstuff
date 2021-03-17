@@ -14,6 +14,8 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   has_many :subscriptions, dependent: :destroy
+  has_many :courses, through: :subscriptions
+
   has_many :comments
   has_one_attached :avatar
 

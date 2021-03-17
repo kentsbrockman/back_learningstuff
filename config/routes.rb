@@ -31,4 +31,13 @@ Rails
           to: 'one_time_payments#cancel',
           as: 'one_time_payments_cancel'
     end
+
+    resources :courses, only: [:index, :show] do
+      resources :chapters, only: [:index, :show] do
+        resources :lessons, only: [:index, :show] do
+          resources :questions, only: [:index, :show]
+          resources :comments
+        end
+      end
+    end
   end
