@@ -33,6 +33,11 @@ gem 'fast_jsonapi'
 gem 'dotenv', '~> 2.7', '>= 2.7.6'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 
+
+#Faker and table_print to inject dummy data in the DB
+gem 'faker', '~> 2.16'
+gem 'table_print', '~> 1.5', '>= 1.5.7'
+
 # Prettier for clean code purpose
 gem 'prettier', '~> 1.5', '>= 1.5.3'
 

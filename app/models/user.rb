@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :role, presence: true
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
 
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
 
