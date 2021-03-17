@@ -13,9 +13,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :role, presence: true
 
+  has_many :subscriptions, dependent: :destroy
   has_one_attached :avatar
-
-  has_many :subscriptions
 
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
 

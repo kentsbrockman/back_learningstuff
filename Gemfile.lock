@@ -113,6 +113,8 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
+    faker (2.16.0)
+      i18n (>= 1.6, < 2)
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
     ffi (1.14.2)
@@ -214,6 +216,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stripe (5.30.0)
+    table_print (1.5.7)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -242,6 +245,7 @@ DEPENDENCIES
   dotenv (~> 2.7, >= 2.7.6)
   dotenv-rails (~> 2.7, >= 2.7.6)
   factory_bot_rails (~> 6.1)
+  faker (~> 2.16)
   fast_jsonapi
   listen (~> 3.3)
   pg (~> 1.1)
@@ -252,6 +256,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.2)
   spring
   stripe (~> 5.30)
+  table_print (~> 1.5, >= 1.5.7)
   tzinfo-data
   warden-jwt_auth (= 0.4.2)
 
