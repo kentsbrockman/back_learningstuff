@@ -36,4 +36,12 @@ Rails
       resources :users, only: [:index, :update, :destroy]
     end
 
+    resources :courses, only: [:index, :show] do
+      resources :chapters, only: [:index, :show] do
+        resources :lessons, only: [:index, :show] do
+          resources :questions, only: [:index, :show]
+          resources :comments
+        end
+      end
+    end
   end

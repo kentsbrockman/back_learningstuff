@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show update destroy]
+  before_action :get_course
+  before_action :get_chapter
+  before_action :get_lesson
+  before_action :authenticate_user!
+  before_action :check_user_is_subscribed
+  before_action :set_comment, only: %i[show]
 
   # GET /comments
   def index
