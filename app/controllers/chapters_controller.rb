@@ -8,12 +8,12 @@ class ChaptersController < ApplicationController
   def index
     @chapters = @course.chapters
 
-    render json: @chapters
+    render json: ChapterSerializer.new(@chapters).serializable_hash.to_json
   end
 
   # GET /chapters/1
   def show
-    render json: @chapter
+    render json: ChapterSerializer.new(@chapter).serializable_hash.to_json
   end
 
   private

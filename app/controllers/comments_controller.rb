@@ -10,12 +10,12 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
 
-    render json: @comments
+    render json: CommentSerializer.new(@comments).serializable_hash.to_json
   end
 
   # GET /comments/1
   def show
-    render json: @comment
+    render json: CommentSerializer.new(@comment).serializable_hash.to_json
   end
 
   # POST /comments

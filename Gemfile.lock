@@ -123,6 +123,8 @@ GEM
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     jwt (2.2.2)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -247,6 +249,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.1)
   faker (~> 2.16)
   fast_jsonapi
+  jsonapi-serializer (~> 2.2)
   listen (~> 3.3)
   pg (~> 1.1)
   prettier (~> 1.5, >= 1.5.3)
