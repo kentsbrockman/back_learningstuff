@@ -30,4 +30,15 @@ Rails
           to: 'one_time_payments#cancel',
           as: 'one_time_payments_cancel'
     end
+
+    resources :courses do
+      resources :chapters do
+        resources :lessons do
+          resources :lesson_contents
+          resources :lesson_videos
+          resources :questions
+          resources :comments
+        end
+      end
+    end
   end
