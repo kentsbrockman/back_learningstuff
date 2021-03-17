@@ -1,4 +1,4 @@
-class CreateOneTimePayments < ActiveRecord::Migration[6.1]
+class CreateOneTimePayment < ActiveRecord::Migration[6.1]
   def change
     create_table :one_time_payments do |t|
       t.references :subscription, null: false, foreign_key: true
