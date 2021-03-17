@@ -5,12 +5,12 @@ class AnswersController < ApplicationController
   def index
     @answers = Answer.all
 
-    render json: @answers
+    render json: AnswerSerializer.new(@answers).serializable_hash.to_json
   end
 
   # GET /answers/1
   def show
-    render json: @answer
+    render json: AnswerSerializer.new(@answer).serializable_hash.to_json
   end
 
   # POST /answers

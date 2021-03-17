@@ -5,12 +5,12 @@ class SubscriptionsController < ApplicationController
   def index
     @subscriptions = Subscription.all
 
-    render json: @subscriptions
+    render json: SubscriptionSerializer.new(@subscriptions).serializable_hash.to_json
   end
 
   # GET /subscriptions/1
   def show
-    render json: @subscription
+    render json: SubscriptionSerializer.new(@subscription).serializable_hash.to_json
   end
 
   # POST /subscriptions

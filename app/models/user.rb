@@ -14,7 +14,8 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   has_many :subscriptions
-
+  has_many :comments
+  
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
 
   scope :approved, -> { where(is_approved: true) }
