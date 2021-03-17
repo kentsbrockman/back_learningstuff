@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+gssource 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
@@ -32,7 +32,6 @@ gem 'warden-jwt_auth', '0.4.2'
 gem 'fast_jsonapi'
 gem 'dotenv', '~> 2.7', '>= 2.7.6'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
-
 
 #Faker and table_print to inject dummy data in the DB
 gem 'faker', '~> 2.16'
