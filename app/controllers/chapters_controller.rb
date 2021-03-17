@@ -1,9 +1,10 @@
 class ChaptersController < ApplicationController
+  before_action :get_course
   before_action :set_chapter, only: %i[show update destroy]
 
   # GET /chapters
   def index
-    @chapters = Chapter.all
+    @chapters = @course.chapters
 
     render json: @chapters
   end
@@ -15,7 +16,7 @@ class ChaptersController < ApplicationController
 
   # POST /chapters
   def create
-    @chapter = Chapter.new(chapter_params)
+    @chapter = @course.chapters.new(chapter_params)
 
     if @chapter.save
       render json: @chapter, status: :created, location: @chapter
@@ -41,6 +42,7 @@ class ChaptersController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+
   def set_chapter
     @chapter = Chapter.find(params[:id])
   end

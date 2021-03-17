@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   has_many :subscriptions
+  has_many :courses, through: :subscriptions
 
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
 
