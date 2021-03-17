@@ -5,12 +5,12 @@ class LearningPathsController < ApplicationController
   def index
     @learning_paths = LearningPath.all
 
-    render json: @learning_paths
+    render json: LearningPathSerializer.new(@learning_paths).serializable_hash.to_json
   end
 
   # GET /learning_paths/1
   def show
-    render json: @learning_path
+    render json: LearningPathSerializer.new(@learning_path).serializable_hash.to_json
   end
 
   # POST /learning_paths
