@@ -1,5 +1,5 @@
 class LessonContentsController < ApplicationController
-  before_action :set_lesson_content, only: [:show, :update, :destroy]
+  before_action :set_lesson_content, only: %i[show update destroy]
 
   # GET /lesson_contents
   def index
@@ -39,13 +39,14 @@ class LessonContentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lesson_content
-      @lesson_content = LessonContent.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def lesson_content_params
-      params.require(:lesson_content).permit(:text, :lesson_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lesson_content
+    @lesson_content = LessonContent.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def lesson_content_params
+    params.require(:lesson_content).permit(:text, :lesson_id)
+  end
 end

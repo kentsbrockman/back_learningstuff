@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :registerable,
          :jwt_authenticatable,
          jwt_revocation_strategy: self
-         
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: true

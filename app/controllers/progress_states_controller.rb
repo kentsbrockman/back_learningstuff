@@ -1,5 +1,5 @@
 class ProgressStatesController < ApplicationController
-  before_action :set_progress_state, only: [:show, :update, :destroy]
+  before_action :set_progress_state, only: %i[show update destroy]
 
   # GET /progress_states
   def index
@@ -39,13 +39,14 @@ class ProgressStatesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_progress_state
-      @progress_state = ProgressState.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def progress_state_params
-      params.require(:progress_state).permit(:course_id, :subscription_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_progress_state
+    @progress_state = ProgressState.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def progress_state_params
+    params.require(:progress_state).permit(:course_id, :subscription_id)
+  end
 end
