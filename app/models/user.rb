@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :role, presence: true
 
+  has_one_attached :avatar
+
   has_many :subscriptions
   has_many :comments
   
