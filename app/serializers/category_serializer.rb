@@ -1,5 +1,4 @@
-class CategorySerializer
-  include JSONAPI::Serializer
-  attributes :title
+class CategorySerializer < ActiveModel::Serializer 
+  attributes :id, :title
   has_many :learning_paths
 end

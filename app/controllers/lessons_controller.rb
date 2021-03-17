@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
   def index
     @lessons = @chapter.lessons
 
-    render json: LessonSerializer.new(@lessons).serializable_hash.to_json
+    render json: @lessons
   end
 
   # GET /lessons/1

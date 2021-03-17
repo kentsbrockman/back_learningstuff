@@ -10,12 +10,12 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
 
-    render json: QuestionSerializer.new(@questions).serializable_hash.to_json
+    render json: @questions
   end
 
   # GET /questions/1
   def show
-    render json: QuestionSerializer.new(@question).serializable_hash.to_json
+    render json: @question
   end
 
   private
