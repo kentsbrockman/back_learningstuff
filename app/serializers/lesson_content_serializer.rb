@@ -1,5 +1,4 @@
-class LessonContentSerializer
-  include JSONAPI::Serializer
-  attributes :text
+class LessonContentSerializer < ActiveModel::Serializer 
+  attributes :id,:text
   belongs_to :lesson
 end
