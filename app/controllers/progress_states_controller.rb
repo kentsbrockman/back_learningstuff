@@ -5,12 +5,20 @@ class ProgressStatesController < ApplicationController
   def index
     @progress_states = ProgressState.all
 
-    render json: ProgressStateSerializer.new(@progress_states).serializable_hash.to_json
+    render json:
+             ProgressStateSerializer
+               .new(@progress_states)
+               .serializable_hash
+               .to_json
   end
 
   # GET /progress_states/1
   def show
-    render json: ProgressStateSerializer.new(@progress_state).serializable_hash.to_json
+    render json:
+             ProgressStateSerializer
+               .new(@progress_state)
+               .serializable_hash
+               .to_json
   end
 
   # POST /progress_states
