@@ -1,6 +1,5 @@
-class QuestionSerializer
-  include JSONAPI::Serializer
-  attributes :position, :content
+class QuestionSerializer < ActiveModel::Serializer 
+  attributes :id, :position, :content
   belongs_to :lesson
   has_many :answers
 end
