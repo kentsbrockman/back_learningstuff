@@ -31,12 +31,12 @@ Rails
           as: 'one_time_payments_cancel'
     end
 
-    resources :courses do
-      resources :chapters do
-        resources :lessons do
-          resources :lesson_contents
-          resources :lesson_videos
-          resources :questions
+    resources :courses, only: [:index, :show] do
+      resources :chapters, only: [:index, :show] do
+        resources :lessons, only: [:index, :show] do
+          resources :lesson_contents, only: [:index, :show]
+          resources :lesson_videos, only: [:index, :show]
+          resources :questions, only: [:index, :show]
           resources :comments
         end
       end

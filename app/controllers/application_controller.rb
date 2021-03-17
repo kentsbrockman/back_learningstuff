@@ -3,13 +3,21 @@ class ApplicationController < ActionController::API
 
   def check_user_is_subscribed
     @course = Course.find(params[:course_id]) if params[:course_id]
-    unless current_user.courses && current_user.courses.includes?(@course)
+    unless current_user.courses && current_user.courses.include?(@course)
       render json: {success: false, error: "You are not allowed to see this page"}, status: 401
     end
   end
 
   def get_course
     @course = Course.find(params[:course_id]) if params[:course_id]
+  end
+
+  def get_chapter
+    @chapter = Chapter.find(params[:chapter_id]) if params[:chapter_id]
+  end
+
+  def get_lesson
+    @lesson = Lesson.find(params[:lesson_id]) if params[:lesson_id]
   end
 
   def render_resource(resource)
