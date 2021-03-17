@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
 
+  scope :to_review, -> { where(is_reviewed: false) }
   scope :approved, -> { where(is_approved: true) }
   scope :students, -> { where(role: 'student') }
   scope :teachers, -> { where(role: 'teacher') }

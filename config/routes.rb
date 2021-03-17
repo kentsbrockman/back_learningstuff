@@ -31,4 +31,9 @@ Rails
           to: 'one_time_payments#cancel',
           as: 'one_time_payments_cancel'
     end
+
+    namespace :admin do
+      resources :users, only: [:index, :update, :destroy]
+    end
+
   end
