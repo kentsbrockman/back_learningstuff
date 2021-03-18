@@ -22,6 +22,8 @@ Rails
     get '/profile', to: 'users#show'
     put '/profile', to: 'users#update'
 
+    resources :learning_paths, only: [:index, :show]
+
     namespace :stripe do
       resources :one_time_payments, only: %i[new create]
       get 'one_time_payment/success',
