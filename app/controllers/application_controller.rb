@@ -28,6 +28,13 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def authenticate_admin
+    unless current_user.role === "admin" && current_user.is_approved
+      render json: {success: false, error: "You are not allowed to see this page"}, status: 401
+    end
+  end
+
+
   def validation_error(resource)
     render json: {
              errors: [
