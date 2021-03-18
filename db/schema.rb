@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_185546) do
+ActiveRecord::Schema.define(version: 2021_03_18_080927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,28 +110,14 @@ ActiveRecord::Schema.define(version: 2021_03_16_185546) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "lesson_contents", force: :cascade do |t|
-    t.text "text"
-    t.bigint "lesson_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["lesson_id"], name: "index_lesson_contents_on_lesson_id"
-  end
-
-  create_table "lesson_videos", force: :cascade do |t|
-    t.string "url"
-    t.bigint "lesson_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["lesson_id"], name: "index_lesson_videos_on_lesson_id"
-  end
-
   create_table "lessons", force: :cascade do |t|
     t.bigint "chapter_id", null: false
     t.integer "position"
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "content"
+    t.string "video_url"
     t.index ["chapter_id"], name: "index_lessons_on_chapter_id"
   end
 
@@ -204,8 +190,6 @@ ActiveRecord::Schema.define(version: 2021_03_16_185546) do
   add_foreign_key "chapters", "courses"
   add_foreign_key "comments", "lessons"
   add_foreign_key "comments", "users"
-  add_foreign_key "lesson_contents", "lessons"
-  add_foreign_key "lesson_videos", "lessons"
   add_foreign_key "lessons", "chapters"
   add_foreign_key "one_time_payments", "subscriptions"
   add_foreign_key "progress_states", "courses"

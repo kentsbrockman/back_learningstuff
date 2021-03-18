@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1
   def show
-    render json: {lesson: @lesson, content: @lesson.lesson_content, video: @lesson.lesson_video, question: @lesson.questions, comments: @lesson.comments}
+    render json: @lesson, include:['*', 'questions.answers']
   end
 
   private
@@ -22,6 +22,5 @@ class LessonsController < ApplicationController
   def set_lesson
     @lesson = Lesson.find(params[:id])
   end
-
 
 end

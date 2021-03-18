@@ -20,14 +20,20 @@ ActiveRecord::Base.connection.reset_pk_sequence!(Course.table_name)
 LearningPath.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!(LearningPath.table_name)
 
-Course.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!(Course.table_name)
-
 Category.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!(Category.table_name)
 
 AllowlistedJwt.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!(AllowlistedJwt.table_name)
+
+ActiveRecord::Base.connection.reset_pk_sequence!(Chapter.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(Lesson.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(Subscription.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(Question.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(Answer.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(ProgressState.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(Comment.table_name)
+
 
 #Admin
 
@@ -172,11 +178,11 @@ puts '-------------------- Chapters paths table --------------------'
 tp Chapter.all
 
 #Lessons
-Lesson.create(title: 'Historic', position: 1, chapter: webpage)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'Historic',
+  position: 1,
+  chapter: webpage,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -223,11 +229,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'Client and server', position: 2, chapter: webpage)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'Client and server',
+  position: 2,
+  chapter: webpage,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -274,11 +280,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'What is a browser', position: 3, chapter: webpage)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'What is a browser',
+  position: 3,
+  chapter: webpage,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -325,11 +331,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'Historic', position: 1, chapter: html)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'Historic',
+  position: 1,
+  chapter: html,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -376,11 +382,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'Useful resources', position: 2, chapter: html)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'Useful resources',
+  position: 2,
+  chapter: html,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -427,11 +433,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'How to organize your page', position: 3, chapter: html)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'How to organize your page',
+  position: 3,
+  chapter: html,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -478,11 +484,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'Historic', position: 1, chapter: css)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'Historic',
+  position: 1,
+  chapter: css,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -529,11 +535,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'Colors and font', position: 2, chapter: css)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'Colors and font',
+  position: 2,
+  chapter: css,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
@@ -580,11 +586,11 @@ Answer.create(
   explanation: Faker::Lorem.sentence
 )
 
-Lesson.create(title: 'Proper indentation', position: 3, chapter: css)
-LessonVideo.create(lesson: Lesson.last, url: Faker::Internet.url)
-LessonContent.create(
-  lesson: Lesson.last,
-  text: Faker::Markdown.sandwich(sentences: 6, repeat: 3)
+Lesson.create(title: 'Proper indentation',
+  position: 3,
+  chapter: css,
+  content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
+  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
 Comment.create(
   content: 'Hello everybody',
