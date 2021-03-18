@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1
   def show
-    render json: @lesson, include:['*', 'questions.answers', 'comments.user']
+    render json: @lesson, include:['*', 'questions.answers']
   end
 
   private

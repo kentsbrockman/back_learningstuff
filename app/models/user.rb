@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :courses, through: :subscriptions
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_one_attached :avatar
 
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
