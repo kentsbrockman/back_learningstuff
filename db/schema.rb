@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_080927) do
+ActiveRecord::Schema.define(version: 2021_03_18_160913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
     t.bigint "question_id", null: false
     t.text "content"
     t.boolean "is_correct", default: false
-    t.text "explanation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -124,6 +123,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
   create_table "lessons_progress_states", id: false, force: :cascade do |t|
     t.bigint "lesson_id", null: false
     t.bigint "progress_state_id", null: false
+    t.string "quizz_result"
   end
 
   create_table "one_time_payments", force: :cascade do |t|
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "explanation"
     t.index ["lesson_id"], name: "index_questions_on_lesson_id"
   end
 

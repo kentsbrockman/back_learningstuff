@@ -26,4 +26,8 @@ class User < ApplicationRecord
   scope :students, -> { where(role: 'student') }
   scope :teachers, -> { where(role: 'teacher') }
   scope :admins, -> { where(role: 'admin') }
+
+  def get_related_subscriptions(course)
+    self.subscriptions.where(course: course)
+  end
 end

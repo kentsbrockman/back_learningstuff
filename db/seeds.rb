@@ -197,38 +197,21 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
+3.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: false,
+    content: Faker::Lorem.word
+  )
+end
 Answer.create(
   question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
+  is_correct: true,
+  content: Faker::Lorem.word
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-
 Lesson.create(title: 'Client and server',
   position: 2,
   chapter: webpage,
@@ -248,37 +231,16 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word,
+  )
+end
 
 Lesson.create(title: 'What is a browser',
   position: 3,
@@ -299,37 +261,16 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word
+  )
+end
 
 Lesson.create(title: 'Historic',
   position: 1,
@@ -350,37 +291,16 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word
+  )
+end
 
 Lesson.create(title: 'Useful resources',
   position: 2,
@@ -401,37 +321,16 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word
+  )
+end
 
 Lesson.create(title: 'How to organize your page',
   position: 3,
@@ -452,37 +351,16 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word
+  )
+end
 
 Lesson.create(title: 'Historic',
   position: 1,
@@ -503,37 +381,16 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word
+  )
+end
 
 Lesson.create(title: 'Colors and font',
   position: 2,
@@ -554,37 +411,16 @@ Comment.create(
 Question.create(
   lesson: Lesson.last,
   position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word
+  )
+end
 
 Lesson.create(title: 'Proper indentation',
   position: 3,
@@ -602,40 +438,21 @@ Comment.create(
   lesson: Lesson.last,
   user: User.all.sample
 )
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote
-)
+
 Question.create(
   lesson: Lesson.last,
   position: 2,
-  content: Faker::TvShows::MichaelScott.quote
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
+  content: Faker::TvShows::MichaelScott.quote,
   explanation: Faker::Lorem.sentence
 )
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
-Answer.create(
-  question: Question.last,
-  is_correct: [true, false].sample,
-  content: Faker::Lorem.word,
-  explanation: Faker::Lorem.sentence
-)
+4.times do
+  Answer.create(
+    question: Question.last,
+    is_correct: [true, false].sample,
+    content: Faker::Lorem.word,
+  )
+end
+
 
 puts '-------------------- Lessons (with content/video/questions/comments) table --------------------'
 tp Lesson.all
