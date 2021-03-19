@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    render json: current_user
+    avatar = rails_blob_path(current_user.avatar)
+    render json: {profile: current_user, avatar: avatar}
   end
 
   def update

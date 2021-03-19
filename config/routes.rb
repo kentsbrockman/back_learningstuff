@@ -15,8 +15,8 @@ Rails
                  registrations: 'registrations'
                }
 
-    resources :users, defaults: { format: :json } do
-      resources :avatars, only: [:create]
+    resources :users do
+      resources :avatars, only: %i[create]
     end
 
     get '/profile', to: 'users#show'
