@@ -15,14 +15,16 @@ Rails
                  registrations: 'registrations'
                }
 
-    resources :users do
-      resources :avatars, only: %i[create]
+    resources :users, defaults: { format: :json } do
+      resources :subscriptions, only: [:create]
+      resources :avatars, only: [:create]
     end
 
     get '/profile', to: 'users#show'
     put '/profile', to: 'users#update'
 
     resources :learning_paths, only: [:index, :show]
+
 
     namespace :stripe do
       resources :one_time_payments, only: %i[new create]
