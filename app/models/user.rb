@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :progress_lessons, through: :progress_states
 
   has_many :comments, dependent: :destroy
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
 
   enum role: { student: 'student', admin: 'admin', teacher: 'teacher' }
 
