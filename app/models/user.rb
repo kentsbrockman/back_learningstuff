@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable :recoverable, :rememberable, :validatable and :omniauthable
 
   include Devise::JWT::RevocationStrategies::Allowlist
-  include Rails.application.routes.url_helpers
 
   devise :database_authenticatable,
          :registerable,
@@ -27,8 +26,4 @@ class User < ApplicationRecord
   scope :students, -> { where(role: 'student') }
   scope :teachers, -> { where(role: 'teacher') }
   scope :admins, -> { where(role: 'admin') }
-
-  def get_avatar_url
-    url_for(self.avatar)
-  end
 end
