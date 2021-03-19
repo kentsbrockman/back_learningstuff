@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: %i[show update destroy]
+  before_action :authenticate_user!
 
   # GET /subscriptions
   def index
@@ -15,12 +16,15 @@ class SubscriptionsController < ApplicationController
 
   # POST /subscriptions
   def create
-    @subscription = Subscription.new(subscription_params)
-
-    if @subscription.save
-      render json: @subscription, status: :created, location: @subscription
+    if current_user.learning_paths.include?(LearningPath.find(params[:learning_path_id]))
+      render json:{errors:"Already Subscribed"}, status: :bad_request
     else
-      render json: @subscription.errors, status: :unprocessable_entity
+      @subscription = current_user.subscriptions.new(subscription_params)
+      if @subscription.save
+      render json: @subscription, status: :created 
+      else
+        render json: @subscription.errors, status: :unprocessable_entity
+      end
     end
   end
 
