@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   has_many :subscriptions, dependent: :destroy
   has_many :courses, through: :subscriptions
+  has_many :progress_states, through: :subscriptions
+  has_many :progress_lessons, through: :progress_states
 
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
@@ -27,7 +29,4 @@ class User < ApplicationRecord
   scope :teachers, -> { where(role: 'teacher') }
   scope :admins, -> { where(role: 'admin') }
 
-  def get_related_subscriptions(course)
-    self.subscriptions.where(course: course)
-  end
 end
