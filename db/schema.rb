@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_080927) do
+ActiveRecord::Schema.define(version: 2021_03_18_160913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
     t.bigint "question_id", null: false
     t.text "content"
     t.boolean "is_correct", default: false
-    t.text "explanation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -121,11 +120,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
     t.index ["chapter_id"], name: "index_lessons_on_chapter_id"
   end
 
-  create_table "lessons_progress_states", id: false, force: :cascade do |t|
-    t.bigint "lesson_id", null: false
-    t.bigint "progress_state_id", null: false
-  end
-
   create_table "one_time_payments", force: :cascade do |t|
     t.bigint "subscription_id", null: false
     t.integer "total_amount", null: false
@@ -133,6 +127,16 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["subscription_id"], name: "index_one_time_payments_on_subscription_id"
+  end
+
+  create_table "progress_lessons", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "progress_state_id", null: false
+    t.string "quizz_result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_progress_lessons_on_lesson_id"
+    t.index ["progress_state_id"], name: "index_progress_lessons_on_progress_state_id"
   end
 
   create_table "progress_states", force: :cascade do |t|
@@ -150,6 +154,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "explanation"
     t.index ["lesson_id"], name: "index_questions_on_lesson_id"
   end
 
@@ -192,6 +197,8 @@ ActiveRecord::Schema.define(version: 2021_03_18_080927) do
   add_foreign_key "comments", "users"
   add_foreign_key "lessons", "chapters"
   add_foreign_key "one_time_payments", "subscriptions"
+  add_foreign_key "progress_lessons", "lessons"
+  add_foreign_key "progress_lessons", "progress_states"
   add_foreign_key "progress_states", "courses"
   add_foreign_key "progress_states", "subscriptions"
   add_foreign_key "questions", "lessons"

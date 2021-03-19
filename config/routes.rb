@@ -44,6 +44,8 @@ Rails
       resources :chapters, only: [:index, :show] do
         resources :lessons, only: [:index, :show] do
           resources :questions, only: [:index, :show]
+            post '/results', to: "progress_lessons#create"
+
           resources :comments
         end
       end
