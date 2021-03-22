@@ -15,6 +15,6 @@ class UserSerializer < ActiveModel::Serializer
   has_many :subscriptions
 
   def avatar
-    rails_blob_path(object.avatar, disposition: "attachment", only_path: true) if object.avatar.attached?
+    rails_blob_url(object.avatar, disposition: "attachment", only_path: true) if object.avatar.attached?
   end
 end
