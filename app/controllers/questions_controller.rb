@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.all
+    @questions = @lesson.questions
 
     render json: @questions
   end
