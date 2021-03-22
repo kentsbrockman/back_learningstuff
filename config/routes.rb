@@ -38,6 +38,7 @@ Rails
 
     namespace :admin do
       resources :users, only: [:index, :update, :destroy]
+      resources :learning_paths
     end
 
     resources :courses, only: [:index, :show] do
