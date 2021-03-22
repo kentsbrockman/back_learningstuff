@@ -12,7 +12,7 @@ class ProgressLessonsController < ApplicationController
       if @progress_lesson
         @progress_lesson.update(quizz_result: params[:quizz_result])
       else
-        @progress_lesson = progress_state.progress_lessons.new(lesson: @lesson, quizz_result: params[:quizz_result])
+        @progress_lesson = progress_state.progress_lessons.create(lesson: @lesson, quizz_result: params[:quizz_result])
       end
     end
 
