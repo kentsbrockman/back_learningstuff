@@ -58,7 +58,7 @@ end
 
 group :development do
   gem 'listen', '~> 3.3'
-
+  gem 'letter_opener', '~> 1.7'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
@@ -68,3 +68,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 
 gem "active_model_serializers", "~> 0.10.12"
+gem 'mailjet', '~> 1.1'
