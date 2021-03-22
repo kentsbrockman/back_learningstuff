@@ -10,11 +10,13 @@ class Lesson < ApplicationRecord
     index = @ordered_lessons.index(self)
     @next_lesson = @ordered_lessons[index + 1]
 
-    if @next_lesson
-      return @next_lesson
-    else
-      return self.chapter.next_chapter&.first_lesson
-    end
+    @next_lesson ? @next_lesson : self.chapter.next_chapter&.first_lesson
+  end
 
+  def previous_lesson
+    @ordered_lessons = self.chapter.lessons.sort_by(&:position)
+    index = @ordered_lessons.index(self)
+
+    index === 0 ? self.chapter.previous_chapter&.last_lesson : @ordered_lessons[index - 1]
   end
 end

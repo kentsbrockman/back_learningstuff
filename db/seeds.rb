@@ -294,29 +294,21 @@ Lesson.all.each do |lesson|
   end
 end
 
-
-
 puts '-------------------- Lessons (with content/video/questions/comments) table --------------------'
 tp Lesson.all
 
 #Subscriptions
 
 student = User.find_by(email: 'student@learning.com')
-Subscription.create(user: student, learning_path: LearningPath.first)
-Subscription
-  .last
-  .learning_path
-  .courses
-  .each do |course|
-    ProgressState.create(subscription: Subscription.last, course: course)
-  end
-Subscription.create(user: student, learning_path: LearningPath.last)
-Subscription
-  .last
-  .learning_path
-  .courses
-  .each do |course|
-    ProgressState.create(subscription: Subscription.last, course: course)
-  end
+
+student.subscriptions.create(learning_path: LearningPath.first)
+student.subscriptions.last.courses.each do |course|
+  student.progress_states.find_or_create_by(course: course)
+end
+
+student.subscriptions.create(learning_path: LearningPath.last)
+student.subscriptions.last.courses.each do |course|
+  student.progress_states.find_or_create_by(course: course)
+end
 puts '-------------------- Subscription (with progressState) table --------------------'
 tp Subscription.all

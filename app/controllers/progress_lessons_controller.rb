@@ -5,23 +5,15 @@ class ProgressLessonsController < ApplicationController
   before_action :check_user_is_subscribed
 
   def create
-    @progress_states = current_user.progress_states.where(course: @course)
-
-    @progress_states.each do |progress_state|
-      @progress_lesson = progress_state.progress_lessons.find_by(lesson: @lesson)
-      if @progress_lesson
-        @progress_lesson.update(quizz_result: params[:quizz_result])
-      else
-        @progress_lesson = progress_state.progress_lessons.create(lesson: @lesson, quizz_result: params[:quizz_result])
-      end
-    end
+    @progress_state = current_user.progress_states.find_by(course: @course)
+    @progress_lesson = @progress_state.progress_lessons.find_or_create_by(lesson: @lesson)
+    @progress_lesson.update(quizz_result: params[:quizz_result])
 
     if @progress_lesson
       render json: @progress_lesson, status: :created
     else
       render json: @progress_lesson.erros.full_messages, status: :unprocessable_entity
     end
-
 
   end
 
