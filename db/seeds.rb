@@ -120,7 +120,7 @@ Course.create(title: 'Learn about Lean Startup')
 Course.create(title: 'Organize your data in a spreadsheet')
 Course.create(title: 'Python is not a snake!')
 Course.create(title: 'Python is still not a snake!')
-Course.create(title: 'ruby on rails is awesome for creating new apps!')
+Course.create(title: 'Ruby on rails is awesome for creating new apps!')
 Course.create(title: 'Start learning code with Javascript')
 Course.create(title: 'Train your coding spirit with Code Wars')
 Course.create(title: 'Javascript is good for you')
@@ -130,10 +130,10 @@ tp Course.all
 
 # CATEGORIES
 Category.create(title:'Business')
-Category.create(title:'web developper')
+Category.create(title:'Web developper')
 Category.create(title:'Ruby')
 Category.create(title:'Javascript')
-Category.create(title: 'Python')
+Category.create(title:'Python')
 Category.create(title:'Coding')
 
 # LEARNING PATHS
@@ -157,7 +157,7 @@ code.courses << [
   Course.find_by(title: 'Manage Your Code Project With Git & Github')
 ]
 code.categories << [
-  Category.find_by(title:'web developper')
+  Category.find_by(title:'Web developper')
 ]
 
 #Solo courses, with learning pathes and categories
@@ -202,7 +202,7 @@ ruby =
     price_in_cents: 30_000
   )
 ruby.courses <<
-  Course.find_by(title: 'ruby on rails is awesome for creating new apps!')
+  Course.find_by(title: 'Ruby on rails is awesome for creating new apps!')
 ruby.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Ruby')
