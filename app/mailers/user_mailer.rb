@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
   default from: 'admin-learningstuff@yopmail.com'
   
-  @url = "https://staging-front-learningstuff.herokuapp.com/"
+  @url = ENV['HOME_URL']
 
   def welcome_email(user)
     @user = user
