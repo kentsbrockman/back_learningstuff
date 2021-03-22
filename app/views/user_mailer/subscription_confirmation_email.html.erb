@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <h1>Hello <%= @user.first_name %> <%= @user.last_name %>!</h1>
+
+    <p>
+      You just signed up for the subscription "<%= @subscription.learning_path.title %>" on LearningStuff.
+    </p>
+    <p>
+      You can manage your registrations on <a href=<%= ENV['PROFILE_URL'] %>><%= ENV['PROFILE_URL'] %></a>
+    </p>
+    <p>Have a nice day! </p>
+  </body>
+</html>
