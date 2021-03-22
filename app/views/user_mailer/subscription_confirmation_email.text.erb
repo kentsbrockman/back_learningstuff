@@ -1,0 +1,6 @@
+Hello <%= @user.first_name %> <%= @user.last_name %>!
+
+You just signed up for the subscription "<%= @subscription.learning_path.title %>".
+You can manage your registrations on <a href=<%= ENV['PROFILE_URL'] %>><%= ENV['PROFILE_URL'] %></a>
+
+Have a nice day!
