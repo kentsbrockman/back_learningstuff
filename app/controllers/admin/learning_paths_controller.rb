@@ -26,20 +26,19 @@ class Admin::LearningPathsController < ApplicationController
 
   # PATCH/PUT /learning_paths/1
   def update
-    puts "DEBUT EDIT"
     if params[:deleted_course_id]
-      @learning_path.courses.where(id: params[:deleted_course_id]).destroy_all
+      @learning_path.courses.delete(Course.find(params[:deleted_course_id]))
       render json: @learning_path
     elsif params[:added_course_id]
-      puts "IL Y A UN COURS A AJOUTER"
       @course =  Course.find(params[:added_course_id])
-      puts "/////"
-      puts @course
       @learning_path.courses << @course
-
       render json: @learning_path
     else
-      puts "RIEN TROVUE"
+      if @learning_path.update(learning_path_params)
+        render json: @learning_path
+      else
+        render json: @learning_path.errors, status: :unprocessable_entity
+      end
     end
 
   end
