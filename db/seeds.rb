@@ -279,63 +279,13 @@ Lesson.create(title: 'Historic',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-3.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: false,
-    content: Faker::Lorem.word
-  )
-end
-Answer.create(
-  question: Question.last,
-  is_correct: true,
-  content: Faker::Lorem.word
-)
+
 Lesson.create(title: 'Client and server',
   position: 2,
   chapter: webpage,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word,
-  )
-end
 
 Lesson.create(title: 'What is a browser',
   position: 3,
@@ -343,29 +293,6 @@ Lesson.create(title: 'What is a browser',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word
-  )
-end
 
 Lesson.create(title: 'Historic',
   position: 1,
@@ -373,29 +300,6 @@ Lesson.create(title: 'Historic',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word
-  )
-end
 
 Lesson.create(title: 'Useful resources',
   position: 2,
@@ -403,29 +307,6 @@ Lesson.create(title: 'Useful resources',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word
-  )
-end
 
 Lesson.create(title: 'How to organize your page',
   position: 3,
@@ -433,29 +314,6 @@ Lesson.create(title: 'How to organize your page',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word
-  )
-end
 
 Lesson.create(title: 'Historic',
   position: 1,
@@ -463,29 +321,6 @@ Lesson.create(title: 'Historic',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word
-  )
-end
 
 Lesson.create(title: 'Colors and font',
   position: 2,
@@ -493,29 +328,6 @@ Lesson.create(title: 'Colors and font',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Question.create(
-  lesson: Lesson.last,
-  position: 1,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word
-  )
-end
 
 Lesson.create(title: 'Proper indentation',
   position: 3,
@@ -523,31 +335,59 @@ Lesson.create(title: 'Proper indentation',
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
   video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
 )
-Comment.create(
-  content: 'Hello everybody',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
-Comment.create(
-  content: 'How are you today',
-  lesson: Lesson.last,
-  user: User.all.sample
-)
 
-Question.create(
-  lesson: Lesson.last,
-  position: 2,
-  content: Faker::TvShows::MichaelScott.quote,
-  explanation: Faker::Lorem.sentence
-)
-4.times do
-  Answer.create(
-    question: Question.last,
-    is_correct: [true, false].sample,
-    content: Faker::Lorem.word,
+Lesson.all.each do |lesson|
+  Comment.create(
+    content: 'Hello everybody',
+    lesson: lesson,
+    user: User.all.sample
   )
+  Comment.create(
+    content: 'How are you today',
+    lesson: lesson,
+    user: User.all.sample
+  )
+  2.times do
+    Question.create(
+      lesson: lesson,
+      content: Faker::TvShows::MichaelScott.quote,
+      explanation: Faker::Lorem.sentence
+    )
+    3.times do
+      Answer.create(
+        question: Question.last,
+        is_correct: false,
+        content: Faker::Lorem.word
+      )
+    end
+    Answer.create(
+      question: Question.last,
+      is_correct: true,
+      content: Faker::Lorem.word
+    )
+  end
+  3.times do
+    Question.create(
+      lesson: lesson,
+      content: Faker::TvShows::MichaelScott.quote,
+      explanation: Faker::Lorem.sentence
+    )
+    2.times do
+      Answer.create(
+        question: Question.last,
+        is_correct: false,
+        content: Faker::Lorem.word
+      )
+    end
+    2.times do
+    Answer.create(
+      question: Question.last,
+      is_correct: true,
+      content: Faker::Lorem.word
+    )
+    end
+  end
 end
-
 
 puts '-------------------- Lessons (with content/video/questions/comments) table --------------------'
 tp Lesson.all
@@ -555,21 +395,15 @@ tp Lesson.all
 #Subscriptions
 
 student = User.find_by(email: 'student@learning.com')
-Subscription.create(user: student, learning_path: LearningPath.first)
-Subscription
-  .last
-  .learning_path
-  .courses
-  .each do |course|
-    ProgressState.create(subscription: Subscription.last, course: course)
-  end
-Subscription.create(user: student, learning_path: LearningPath.last)
-Subscription
-  .last
-  .learning_path
-  .courses
-  .each do |course|
-    ProgressState.create(subscription: Subscription.last, course: course)
-  end
+
+student.subscriptions.create(learning_path: LearningPath.first)
+student.subscriptions.last.courses.each do |course|
+  student.progress_states.find_or_create_by(course: course)
+end
+
+student.subscriptions.create(learning_path: LearningPath.last)
+student.subscriptions.last.courses.each do |course|
+  student.progress_states.find_or_create_by(course: course)
+end
 puts '-------------------- Subscription (with progressState) table --------------------'
 tp Subscription.all
