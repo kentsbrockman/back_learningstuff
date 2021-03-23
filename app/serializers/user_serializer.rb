@@ -13,7 +13,8 @@ class UserSerializer < ActiveModel::Serializer
              :avatar
   has_many :comments
   has_many :subscriptions
-  has_many :progress_states
+  has_many :progress_lessons
+  has_many :read_lessons
 
   def avatar
     if object.avatar.attached?
