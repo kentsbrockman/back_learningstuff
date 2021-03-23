@@ -69,3 +69,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'mailjet', '~> 1.1'
+
+gem 'pry'
