@@ -18,7 +18,7 @@ class LearningPathsController < ApplicationController
 
   # GET /learning_paths/1
   def show
-    render json: @learning_path, include: ['*','courses','courses.chapters', 'courses.chapters.lessons']
+    render json: @learning_paths
   end
 
   private
