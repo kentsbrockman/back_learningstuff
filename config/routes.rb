@@ -24,7 +24,7 @@ Rails
     put '/profile', to: 'users#update'
 
     resources :learning_paths, only: [:index, :show]
-
+    resources :categories, only: [:index, :show]
 
     namespace :stripe do
       resources :one_time_payments, only: %i[create]
