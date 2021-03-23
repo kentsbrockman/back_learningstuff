@@ -34,9 +34,9 @@ class User < ApplicationRecord
   after_update :send_email_approval
 
   def subscribe(learning_path)
-    self.Subscription.create(learning_path: learning_path)
-    self.courses.each do |course|
-      ProgressState.create(course: course)
+    @subscription = self.Subscription.create(learning_path: learning_path)
+    @subscription.courses.each do |course|
+      self.ProgressState.create(course: course)
     end
     self.send_subscription_approval
   end
