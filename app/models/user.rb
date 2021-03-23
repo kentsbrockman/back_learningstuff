@@ -50,5 +50,4 @@ class User < ApplicationRecord
   def send_email_approval
     UserMailer.email_approval(self).deliver_now
   end
-
 end

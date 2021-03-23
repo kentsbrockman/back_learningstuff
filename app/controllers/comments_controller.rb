@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = @lesson.comments.order("created_at DESC")
+    @comments = @lesson.comments.order('created_at DESC')
 
     render json: @comments
   end

@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: %i[show update destroy]
 
   def index
     if params[:is_reviewed]
@@ -24,9 +24,8 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-   @user.destroy
+    @user.destroy
   end
-
 
   private
 
@@ -37,5 +36,4 @@ class Admin::UsersController < Admin::BaseController
   def user_params
     params.require(:user).permit(:is_approved, :role)
   end
-
 end

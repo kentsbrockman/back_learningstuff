@@ -5,16 +5,18 @@ class Stripe::OneTimePaymentsController < ApplicationController
     session =
       Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
-        line_items: [{
-          price_data: {
-            unit_amount: total,
-            currency: 'eur',
-            product_data: {
-              name: learning_path,
+        line_items: [
+          {
+            price_data: {
+              unit_amount: total,
+              currency: 'eur',
+              product_data: {
+                name: learning_path
+              }
             },
-          },
-          quantity: 1,
-        }],
+            quantity: 1
+          }
+        ],
         mode: 'payment',
         success_url:
           stripe_one_time_payments_success_url +

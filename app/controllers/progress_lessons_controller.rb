@@ -6,15 +6,16 @@ class ProgressLessonsController < ApplicationController
 
   def create
     @progress_state = current_user.progress_states.find_by(course: @course)
-    @progress_lesson = @progress_state.progress_lessons.find_or_create_by(lesson: @lesson)
+    @progress_lesson =
+      @progress_state.progress_lessons.find_or_create_by(lesson: @lesson)
     @progress_lesson.update(quizz_result: params[:quizz_result])
 
     if @progress_lesson
       render json: @progress_lesson, status: :created
     else
-      render json: @progress_lesson.erros.full_messages, status: :unprocessable_entity
+      render json: @progress_lesson.erros.full_messages,
+             status: :unprocessable_entity
     end
-
   end
 
   private
@@ -22,5 +23,4 @@ class ProgressLessonsController < ApplicationController
   def progress_state_params
     params.require(:lesson_progress_state).permit(:quizz_result)
   end
-
 end
