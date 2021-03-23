@@ -3,7 +3,7 @@ class Admin::LearningPathsController < ApplicationController
 
   # GET /learning_paths
   def index
-    @learning_paths = LearningPath.all
+    @learning_paths = LearningPath.all.order("created_at DESC")
 
     render json: @learning_paths
   end
@@ -16,6 +16,10 @@ class Admin::LearningPathsController < ApplicationController
   # POST /learning_paths
   def create
     @learning_path = LearningPath.new(learning_path_params)
+    @courses_ids =  params[:selected_courses_ids].split(',')
+    @courses_ids.each do |id|
+      @learning_path.courses << Course.find(id)
+    end
 
     if @learning_path.save
       render json: @learning_path, status: :created, location: @learning_path
@@ -57,6 +61,6 @@ class Admin::LearningPathsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def learning_path_params
-    params.require(:learning_path).permit(:title, :price_in_cents, :deleted_course_id, :added_course_id)
+    params.require(:learning_path).permit(:title, :price_in_cents, :deleted_course_id, :added_course_id, :selected_courses_ids)
   end
 end
