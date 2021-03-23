@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_160913) do
+ActiveRecord::Schema.define(version: 2021_03_22_161121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,11 +141,11 @@ ActiveRecord::Schema.define(version: 2021_03_18_160913) do
 
   create_table "progress_states", force: :cascade do |t|
     t.bigint "course_id", null: false
-    t.bigint "subscription_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["course_id"], name: "index_progress_states_on_course_id"
-    t.index ["subscription_id"], name: "index_progress_states_on_subscription_id"
+    t.index ["user_id"], name: "index_progress_states_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_160913) do
   add_foreign_key "progress_lessons", "lessons"
   add_foreign_key "progress_lessons", "progress_states"
   add_foreign_key "progress_states", "courses"
-  add_foreign_key "progress_states", "subscriptions"
+  add_foreign_key "progress_states", "users"
   add_foreign_key "questions", "lessons"
   add_foreign_key "subscriptions", "learning_paths"
   add_foreign_key "subscriptions", "users"

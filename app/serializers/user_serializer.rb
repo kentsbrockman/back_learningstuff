@@ -1,5 +1,5 @@
-class UserSerializer < ActiveModel::Serializer 
-  include Rails.application.routes.url_helpers  
+class UserSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :email,
              :first_name,
              :last_name,
@@ -13,8 +13,15 @@ class UserSerializer < ActiveModel::Serializer
              :avatar
   has_many :comments
   has_many :subscriptions
+  has_many :progress_states
 
   def avatar
-    rails_blob_path(object.avatar, disposition: "attachment", only_path: true) if object.avatar.attached?
+    if object.avatar.attached?
+      if Rails.env.production?
+        object.avatar&.service_url&.split("?")&.first
+      else
+        "http://localhost:8080" + rails_blob_path(object.avatar)
+      end
+    end
   end
 end

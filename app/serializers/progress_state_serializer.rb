@@ -1,6 +1,6 @@
-class ProgressStateSerializer < ActiveModel::Serializer 
+class ProgressStateSerializer < ActiveModel::Serializer
   attributes :id
   belongs_to :course
-  belongs_to :subscription
+  belongs_to :user
   has_many :lessons
 end
