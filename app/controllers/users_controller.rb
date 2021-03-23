@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    render json: current_user
+    render json: current_user, include:['*', 'courses.progress_state.lessons']
   end
 
   def update
