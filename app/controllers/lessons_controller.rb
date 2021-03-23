@@ -19,7 +19,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1
   def show
-    render json: @lesson, include:['*', 'questions.answers']
+    render json: @lesson, include: %w[* questions.answers]
   end
 
   private
@@ -39,5 +39,4 @@ class LessonsController < ApplicationController
   def set_lesson
     @lesson = Lesson.find(params[:id])
   end
-
 end

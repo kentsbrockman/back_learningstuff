@@ -23,11 +23,11 @@ Rails
     get '/profile', to: 'users#show'
     put '/profile', to: 'users#update'
 
-    resources :learning_paths, only: [:index, :show]
-
+    resources :learning_paths, only: %i[index show]
+    resources :categories, only: %i[index show]
 
     namespace :stripe do
-      resources :one_time_payments, only: %i[new create]
+      resources :one_time_payments, only: %i[create]
       get 'one_time_payment/success',
           to: 'one_time_payments#success',
           as: 'one_time_payments_success'
@@ -37,15 +37,15 @@ Rails
     end
 
     namespace :admin do
-      resources :users, only: [:index, :update, :destroy]
+      resources :users, only: %i[index update destroy]
       resources :learning_paths
     end
 
-    resources :courses, only: [:index, :show] do
-      resources :chapters, only: [:index, :show] do
-        resources :lessons, only: [:index, :show] do
-          resources :questions, only: [:index, :show]
-            post '/results', to: "progress_lessons#create"
+    resources :courses, only: %i[index show] do
+      resources :chapters, only: %i[index show] do
+        resources :lessons, only: %i[index show] do
+          resources :questions, only: %i[index show]
+          post '/results', to: 'progress_lessons#create'
 
           resources :comments
         end

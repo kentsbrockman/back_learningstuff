@@ -3,7 +3,7 @@ class Admin::LearningPathsController < ApplicationController
 
   # GET /learning_paths
   def index
-    @learning_paths = LearningPath.all
+    @learning_paths = LearningPath.all.order('created_at DESC')
 
     render json: @learning_paths
   end
@@ -16,6 +16,8 @@ class Admin::LearningPathsController < ApplicationController
   # POST /learning_paths
   def create
     @learning_path = LearningPath.new(learning_path_params)
+    @courses_ids = params[:selected_courses_ids].split(',')
+    @courses_ids.each { |id| @learning_path.courses << Course.find(id) }
 
     if @learning_path.save
       render json: @learning_path, status: :created, location: @learning_path
@@ -30,7 +32,7 @@ class Admin::LearningPathsController < ApplicationController
       @learning_path.courses.delete(Course.find(params[:deleted_course_id]))
       render json: @learning_path
     elsif params[:added_course_id]
-      @course =  Course.find(params[:added_course_id])
+      @course = Course.find(params[:added_course_id])
       @learning_path.courses << @course
       render json: @learning_path
     else
@@ -40,7 +42,6 @@ class Admin::LearningPathsController < ApplicationController
         render json: @learning_path.errors, status: :unprocessable_entity
       end
     end
-
   end
 
   # DELETE /learning_paths/1
@@ -57,6 +58,14 @@ class Admin::LearningPathsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def learning_path_params
-    params.require(:learning_path).permit(:title, :price_in_cents, :deleted_course_id, :added_course_id)
+    params
+      .require(:learning_path)
+      .permit(
+        :title,
+        :price_in_cents,
+        :deleted_course_id,
+        :added_course_id,
+        :selected_courses_ids
+      )
   end
 end

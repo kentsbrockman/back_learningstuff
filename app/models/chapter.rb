@@ -22,6 +22,4 @@ class Chapter < ApplicationRecord
     index = @ordered_chapters.index(self)
     index != 0 ? @ordered_chapters[index - 1] : nil
   end
-
 end
-
