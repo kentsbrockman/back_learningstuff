@@ -27,7 +27,7 @@ Rails
 
 
     namespace :stripe do
-      resources :one_time_payments, only: %i[new create]
+      resources :one_time_payments, only: %i[create]
       get 'one_time_payment/success',
           to: 'one_time_payments#success',
           as: 'one_time_payments_success'
