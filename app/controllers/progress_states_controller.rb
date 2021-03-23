@@ -24,19 +24,6 @@ class ProgressStatesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /progress_states/1
-  def update
-    if @progress_state.update(progress_state_params)
-      render json: @progress_state
-    else
-      render json: @progress_state.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /progress_states/1
-  def destroy
-    @progress_state.destroy
-  end
 
   private
 
