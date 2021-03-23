@@ -16,6 +16,12 @@ class UserSerializer < ActiveModel::Serializer
   has_many :progress_states
 
   def avatar
-    rails_blob_url(object.avatar, disposition: "attachment", only_path: true) if object.avatar.attached?
+    if object.avatar.attached?
+      if Rails.env.production?
+        object.avatar&.service_url&.split("?")&.first
+      else
+        "http://localhost:8080" + rails_blob_path(object.avatar)
+      end
+    end
   end
 end
