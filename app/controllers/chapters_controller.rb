@@ -23,5 +23,4 @@ class ChaptersController < ApplicationController
   def set_chapter
     @chapter = Chapter.find(params[:id])
   end
-
 end

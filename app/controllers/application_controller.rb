@@ -4,7 +4,11 @@ class ApplicationController < ActionController::API
   def check_user_is_subscribed
     @course = Course.find(params[:course_id]) if params[:course_id]
     unless current_user.courses && current_user.courses.include?(@course)
-      render json: {success: false, error: "You are not allowed to see this page"}, status: 401
+      render json: {
+               success: false,
+               error: 'You are not allowed to see this page'
+             },
+             status: 401
     end
   end
 
@@ -29,11 +33,14 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_admin
-    unless current_user.role === "admin" && current_user.is_approved
-      render json: {success: false, error: "You are not allowed to see this page"}, status: 401
+    unless current_user.role === 'admin' && current_user.is_approved
+      render json: {
+               success: false,
+               error: 'You are not allowed to see this page'
+             },
+             status: 401
     end
   end
-
 
   def validation_error(resource)
     render json: {

@@ -12,5 +12,4 @@ class CoursesController < ApplicationController
   def show
     render json: @course
   end
-
 end

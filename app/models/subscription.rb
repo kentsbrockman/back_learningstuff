@@ -6,11 +6,9 @@ class Subscription < ApplicationRecord
   after_create :send_subscription_confirmation_email
 
   scope :with_course,
-  ->(course_id)  { joins(:courses).where('courses.id = ?', course_id) }
+        ->(course_id) { joins(:courses).where('courses.id = ?', course_id) }
 
   def send_subscription_confirmation_email
     UserMailer.subscription_confirmation_email(self).deliver_now
   end
-
 end
-

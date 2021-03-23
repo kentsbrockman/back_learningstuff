@@ -17,6 +17,10 @@ class Lesson < ApplicationRecord
     @ordered_lessons = self.chapter.lessons.sort_by(&:position)
     index = @ordered_lessons.index(self)
 
-    index === 0 ? self.chapter.previous_chapter&.last_lesson : @ordered_lessons[index - 1]
+    if index === 0
+      self.chapter.previous_chapter&.last_lesson
+    else
+      @ordered_lessons[index - 1]
+    end
   end
 end

@@ -34,7 +34,6 @@ ActiveRecord::Base.connection.reset_pk_sequence!(Answer.table_name)
 ActiveRecord::Base.connection.reset_pk_sequence!(ProgressState.table_name)
 ActiveRecord::Base.connection.reset_pk_sequence!(Comment.table_name)
 
-
 #Admin
 
 User.create(
@@ -129,12 +128,12 @@ puts '-------------------- Courses table --------------------'
 tp Course.all
 
 # CATEGORIES
-Category.create(title:'Business')
-Category.create(title:'Web developper')
-Category.create(title:'Ruby')
-Category.create(title:'Javascript')
-Category.create(title:'Python')
-Category.create(title:'Coding')
+Category.create(title: 'Business')
+Category.create(title: 'Web developper')
+Category.create(title: 'Ruby')
+Category.create(title: 'Javascript')
+Category.create(title: 'Python')
+Category.create(title: 'Coding')
 
 # LEARNING PATHS
 business =
@@ -145,9 +144,7 @@ business.courses << [
   Course.find_by(title: 'Learn About Agile Project Management and SCRUM'),
   Course.find_by(title: 'Organize your data in a spreadsheet')
 ]
-business.categories << [
-  Category.find_by(title:'Business')
-]
+business.categories << [Category.find_by(title: 'Business')]
 
 code =
   LearningPath.create(title: 'Become a web developer', price_in_cents: 80_000)
@@ -156,9 +153,7 @@ code.courses << [
   Course.find_by(title: 'Learn Programming With JavaScript'),
   Course.find_by(title: 'Manage Your Code Project With Git & Github')
 ]
-code.categories << [
-  Category.find_by(title:'Web developper')
-]
+code.categories << [Category.find_by(title: 'Web developper')]
 
 #Solo courses, with learning pathes and categories
 start =
@@ -168,76 +163,51 @@ start =
   )
 start.courses <<
   Course.find_by(title: 'Build Your First Web Pages With HTML and CSS')
-start.categories << [
-  Category.find_by(title: 'Coding') 
-]
+start.categories << [Category.find_by(title: 'Coding')]
 
 python =
   LearningPath.create(
     title: 'Get started with web Python',
     price_in_cents: 20_000
   )
-python.courses <<
-  Course.find_by(title: 'Python is not a snake!')
+python.courses << Course.find_by(title: 'Python is not a snake!')
 python.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Python')
 ]
 
 pythonadv =
-  LearningPath.create(
-    title: 'Advanced Python',
-    price_in_cents: 30_000
-  )
-pythonadv.courses <<
-  Course.find_by(title: 'Python is still not a snake!')
+  LearningPath.create(title: 'Advanced Python', price_in_cents: 30_000)
+pythonadv.courses << Course.find_by(title: 'Python is still not a snake!')
 pythonadv.categories << [
-    Category.find_by(title: 'Coding'),
-    Category.find_by(title: 'Python')
-  ]
+  Category.find_by(title: 'Coding'),
+  Category.find_by(title: 'Python')
+]
 
-ruby =
-  LearningPath.create(
-    title: 'Ruby on rails',
-    price_in_cents: 30_000
-  )
+ruby = LearningPath.create(title: 'Ruby on rails', price_in_cents: 30_000)
 ruby.courses <<
   Course.find_by(title: 'Ruby on rails is awesome for creating new apps!')
 ruby.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Ruby')
-  ]
+]
 
 jsnoob =
-  LearningPath.create(
-    title: 'Javascript for noobs',
-    price_in_cents: 5_000
-  )
-jsnoob.courses <<
-  Course.find_by(title: 'Start learning code with Javascript')
+  LearningPath.create(title: 'Javascript for noobs', price_in_cents: 5_000)
+jsnoob.courses << Course.find_by(title: 'Start learning code with Javascript')
 jsnoob.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Javascript')
 ]
 
 codewars =
-  LearningPath.create(
-    title: 'Code Wars for training',
-    price_in_cents: 5_000
-  )
+  LearningPath.create(title: 'Code Wars for training', price_in_cents: 5_000)
 codewars.courses <<
   Course.find_by(title: 'Train your coding spirit with Code Wars')
-codewars.categories << [
-  Category.find_by(title: 'Coding')
-]
+codewars.categories << [Category.find_by(title: 'Coding')]
 
-jsadv =
-  LearningPath.create(
-    title: 'Advanced Javascript',
-    price_in_cents: 5_000
-  )
-jsadv.courses <<
-  Course.find_by(title: 'Javascript is good for you')
+jsadv = LearningPath.create(title: 'Advanced Javascript', price_in_cents: 5_000)
+jsadv.courses << Course.find_by(title: 'Javascript is good for you')
 jsadv.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Javascript')
@@ -273,67 +243,76 @@ puts '-------------------- Chapters paths table --------------------'
 tp Chapter.all
 
 #Lessons
-Lesson.create(title: 'Historic',
+Lesson.create(
+  title: 'Historic',
   position: 1,
   chapter: webpage,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'Client and server',
+Lesson.create(
+  title: 'Client and server',
   position: 2,
   chapter: webpage,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'What is a browser',
+Lesson.create(
+  title: 'What is a browser',
   position: 3,
   chapter: webpage,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'Historic',
+Lesson.create(
+  title: 'Historic',
   position: 1,
   chapter: html,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'Useful resources',
+Lesson.create(
+  title: 'Useful resources',
   position: 2,
   chapter: html,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'How to organize your page',
+Lesson.create(
+  title: 'How to organize your page',
   position: 3,
   chapter: html,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'Historic',
+Lesson.create(
+  title: 'Historic',
   position: 1,
   chapter: css,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'Colors and font',
+Lesson.create(
+  title: 'Colors and font',
   position: 2,
   chapter: css,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
-Lesson.create(title: 'Proper indentation',
+Lesson.create(
+  title: 'Proper indentation',
   position: 3,
   chapter: css,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: "https://www.youtube.com/watch?v=i_dOaAqx6GU"
+  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
 )
 
 Lesson.all.each do |lesson|
@@ -380,11 +359,11 @@ Lesson.all.each do |lesson|
       )
     end
     2.times do
-    Answer.create(
-      question: Question.last,
-      is_correct: true,
-      content: Faker::Lorem.word
-    )
+      Answer.create(
+        question: Question.last,
+        is_correct: true,
+        content: Faker::Lorem.word
+      )
     end
   end
 end
@@ -397,13 +376,17 @@ tp Lesson.all
 student = User.find_by(email: 'student@learning.com')
 
 student.subscriptions.create(learning_path: LearningPath.first)
-student.subscriptions.last.courses.each do |course|
-  student.progress_states.find_or_create_by(course: course)
-end
+student
+  .subscriptions
+  .last
+  .courses
+  .each { |course| student.progress_states.find_or_create_by(course: course) }
 
 student.subscriptions.create(learning_path: LearningPath.last)
-student.subscriptions.last.courses.each do |course|
-  student.progress_states.find_or_create_by(course: course)
-end
+student
+  .subscriptions
+  .last
+  .courses
+  .each { |course| student.progress_states.find_or_create_by(course: course) }
 puts '-------------------- Subscription (with progressState) table --------------------'
 tp Subscription.all
