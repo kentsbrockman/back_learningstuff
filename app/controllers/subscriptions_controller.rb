@@ -16,12 +16,14 @@ class SubscriptionsController < ApplicationController
 
   # POST /subscriptions
   def create
-    if current_user.learning_paths.include?(LearningPath.find(params[:learning_path_id]))
-      render json:{errors:"Already Subscribed"}, status: :bad_request
+    if current_user.learning_paths.include?(
+         LearningPath.find(params[:learning_path_id])
+       )
+      render json: { errors: 'Already Subscribed' }, status: :bad_request
     else
       @subscription = current_user.subscriptions.new(subscription_params)
       if @subscription.save
-      render json: @subscription, status: :created 
+        render json: @subscription, status: :created
       else
         render json: @subscription.errors, status: :unprocessable_entity
       end

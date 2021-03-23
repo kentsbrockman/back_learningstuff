@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :courses, through: :subscriptions
   has_many :progress_states, dependent: :destroy
   has_many :progress_lessons, through: :progress_states
+  has_many :read_lessons, through: :progress_lessons, source: :lesson
   has_many :learning_paths, through: :subscriptions
 
   has_many :comments, dependent: :destroy
@@ -50,5 +51,4 @@ class User < ApplicationRecord
   def send_email_approval
     UserMailer.email_approval(self).deliver_now
   end
-
 end
