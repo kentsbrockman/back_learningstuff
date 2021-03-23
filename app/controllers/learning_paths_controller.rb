@@ -7,14 +7,13 @@ class LearningPathsController < ApplicationController
     if params[:categories]
       categories_ids = params[:categories].split(',')
       @learning_paths = LearningPath.all.filter{ |path| categories_ids.all?{|catId| path.categories.any? {|id| id.id == catId.to_i} } }
-      puts categories_ids.class
     end
     render json: @learning_paths
   end
 
   # GET /learning_paths/1
   def show
-    render json: @learning_path
+    render json: @learning_path, include: ['*','courses','courses.chapters', 'courses.chapters.lessons']
   end
 
   private

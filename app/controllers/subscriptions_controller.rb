@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = current_user.subscriptions
 
     render json: @subscriptions
   end
