@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :progress_lessons, through: :progress_states
   has_many :read_lessons, through: :progress_lessons, source: :lesson
   has_many :learning_paths, through: :subscriptions
+  has_and_belongs_to_many :categories, dependent: :destroy
 
   has_many :comments, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
