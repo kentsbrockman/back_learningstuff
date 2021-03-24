@@ -32,14 +32,14 @@ class User < ApplicationRecord
   scope :admins, -> { where(role: 'admin') }
 
   after_create :send_welcome_email
-  after_update :send_email_approval
 
-  def subscribe(learning_path)
-    @subscription = self.Subscription.create(learning_path: learning_path)
-    @subscription.courses.each do |course|
-      self.ProgressState.create(course: course)
+  def subscribe(learning_path, customer_stripe_id)
+    @subscription = Subscription.create(user: self, learning_path: learning_path)
+    @subscription.learning_path.courses.each do |course|
+      ProgressState.create(course: course, user: self)
     end
-    self.send_subscription_approval
+    binding.pry
+    self.update!(customer_stripe_id: customer_stripe_id)
   end
 
   private
