@@ -20,6 +20,7 @@ class Stripe::OneTimePaymentsController < ApplicationController
         }
       ],
       mode: 'payment',
+      customer: current_user.customer_stripe_id,
       client_reference_id: current_user.id,
       success_url:
       stripe_one_time_payments_success_url +
@@ -33,14 +34,12 @@ class Stripe::OneTimePaymentsController < ApplicationController
     session = Stripe::Checkout::Session.retrieve(params[:session_id])
     user = User.find(session.client_reference_id)
     learning_path = LearningPath.find(session.metadata.learning_path)
+    total_amount = session.amount_total
     customer_stripe_id = session.customer
-    user.subscribe(learning_path, customer_stripe_id)
-
-    render json: customer_stripe_id
+    user.subscribe(learning_path, customer_stripe_id, total_amount)
   end
 
   def cancel
-    puts 'Stripe Session --> CANCEL'
   end
 
 end
