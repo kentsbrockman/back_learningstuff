@@ -26,17 +26,17 @@ class Chapter < ApplicationRecord
   end
 
   def import_content(github_uri, chapter)
-    self.title = get_content(github_uri, chapter.path + "/chapter_title.txt").squish
-    self.position = chapter.name.split("_")[1]
+    self.title =
+      get_content(github_uri, chapter.path + '/chapter_title.txt').squish
+    self.position = chapter.name.split('_')[1]
     self.save
 
     lessons_contents = client.contents(github_uri, path: chapter.path)
     lessons_contents&.each do |lesson|
-      if lesson.name.start_with?("lesson")
+      if lesson.name.start_with?('lesson')
         @lesson = self.lessons.new
         @lesson.import_content(github_uri, lesson)
       end
     end
   end
-
 end

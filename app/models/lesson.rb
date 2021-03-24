@@ -28,18 +28,29 @@ class Lesson < ApplicationRecord
   end
 
   def import_content(github_uri, lesson)
-    self.title = get_content(github_uri, lesson.path + "/lesson_title.txt")&.squish
-    self.content = get_content(github_uri, lesson.path + "/lesson_content.txt")&.squish
-    self.video_url = get_content(github_uri, lesson.path + "/lesson_video.txt")&.squish
-    self.position = lesson.name.split("_")[1]
+    self.title =
+      get_content(github_uri, lesson.path + '/lesson_title.txt')&.squish
+    self.content =
+      get_content(github_uri, lesson.path + '/lesson_content.txt')&.squish
+    self.video_url =
+      get_content(github_uri, lesson.path + '/lesson_video.txt')&.squish
+    self.position = lesson.name.split('_')[1]
     self.save
 
-    lesson_quizz = get_content_json(github_uri, lesson.path + "/lesson_quizz.json")
+    lesson_quizz =
+      get_content_json(github_uri, lesson.path + '/lesson_quizz.json')
     if lesson_quizz
-      lesson_quizz["questions"]&.each do |question|
-        @new_question = self.questions.create(content: question["content"], explanation: question["explanation"])
-        question["answers"]&.each do |answer|
-          @new_question.answers.create(content: answer["content"], is_correct: answer["is_correct"])
+      lesson_quizz['questions']&.each do |question|
+        @new_question =
+          self.questions.create(
+            content: question['content'],
+            explanation: question['explanation']
+          )
+        question['answers']&.each do |answer|
+          @new_question.answers.create(
+            content: answer['content'],
+            is_correct: answer['is_correct']
+          )
         end
       end
     end

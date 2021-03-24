@@ -14,17 +14,16 @@ class Course < ApplicationRecord
 
   def import_content(github_url)
     uri = get_repository_uri(github_url)
-    self.update(title: get_content(uri, "/course_title.txt").squish)
+    self.update(title: get_content(uri, '/course_title.txt').squish)
 
     chapters_contents = client.contents(uri)
     chapters_contents&.each do |chapter|
-      if chapter.name.start_with?("chapter")
+      if chapter.name.start_with?('chapter')
         @chapter = self.chapters.new
         @chapter.import_content(uri, chapter)
       end
     end
 
-    puts "All done!"
+    puts 'All done!'
   end
-
 end
