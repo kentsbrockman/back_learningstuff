@@ -34,12 +34,31 @@ class Stripe::OneTimePaymentsController < ApplicationController
     session = Stripe::Checkout::Session.retrieve(params[:session_id])
     user = User.find(session.client_reference_id)
     learning_path = LearningPath.find(session.metadata.learning_path)
-    total_amount = session.amount_total
     customer_stripe_id = session.customer
+    total_amount = session.amount_total
     user.subscribe(learning_path, customer_stripe_id, total_amount)
+    create_invoice(customer_stripe_id, total_amount, learning_path.title)
   end
 
   def cancel
+  end
+
+  private
+
+  def create_invoice(customer_stripe_id, total_amount, description)
+    invoice_item = Stripe::InvoiceItem.create({
+      customer: customer_stripe_id,
+      description: description,
+      amount: total_amount,
+      currency: 'eur',
+    })
+
+    invoice = Stripe::Invoice.create({
+      customer: customer_stripe_id,
+      auto_advance: false,
+    })
+
+    finalize_invoice = Stripe::Invoice.finalize_invoice(invoice.id)
   end
 
 end

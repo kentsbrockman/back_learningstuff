@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable :recoverable, :rememberable, :validatable and :omniauthable
 
   include Devise::JWT::RevocationStrategies::Allowlist
-  include ActiveModel::Dirty
 
   devise :database_authenticatable,
          :registerable,
