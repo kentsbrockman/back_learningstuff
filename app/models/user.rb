@@ -34,12 +34,11 @@ class User < ApplicationRecord
   after_create :send_welcome_email
 
   def subscribe(learning_path, customer_stripe_id)
-    @subscription = Subscription.create(user: self, learning_path: learning_path)
-    @subscription.learning_path.courses.each do |course|
-      ProgressState.create(course: course, user: self)
+    @subscription = self.subscriptions.create(learning_path: learning_path)
+    @subscription.learning_paths.courses.each do |course|
+      self.progress_states.create(course: course)
     end
-    binding.pry
-    self.update!(customer_stripe_id: customer_stripe_id)
+    self.update(customer_stripe_id: customer_stripe_id)
   end
 
   private
