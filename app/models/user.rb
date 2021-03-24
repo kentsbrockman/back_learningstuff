@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable :recoverable, :rememberable, :validatable and :omniauthable
 
   include Devise::JWT::RevocationStrategies::Allowlist
+  include ActiveModel::Dirty
 
   devise :database_authenticatable,
          :registerable,
@@ -32,6 +33,7 @@ class User < ApplicationRecord
   scope :admins, -> { where(role: 'admin') }
 
   after_create :send_welcome_email
+  # after_update :send_email_approval
 
   def subscribe(learning_path, customer_stripe_id, total_amount)
     subscription = Subscription.create(user: self, learning_path: learning_path)
