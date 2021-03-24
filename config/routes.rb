@@ -39,6 +39,7 @@ Rails
     namespace :admin do
       resources :users, only: %i[index update destroy]
       resources :learning_paths
+      resources :categories
       resources :courses, only: %i[index destroy create]
     end
 
