@@ -38,7 +38,6 @@ class User < ApplicationRecord
     @subscription.learning_path.courses.each do |course|
       ProgressState.create(course: course, user: self)
     end
-    binding.pry
     self.update!(customer_stripe_id: customer_stripe_id)
   end
 
