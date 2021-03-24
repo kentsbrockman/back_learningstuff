@@ -14,6 +14,7 @@ class ApplicationController < ActionController::API
 
   def get_course
     @course = Course.find(params[:course_id]) if params[:course_id]
+    @course = Course.find(params[:id]) if params[:id]
   end
 
   def get_chapter

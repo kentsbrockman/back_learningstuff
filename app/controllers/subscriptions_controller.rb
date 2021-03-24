@@ -4,9 +4,9 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = current_user.subscriptions
 
-    render json: @subscriptions
+    render json: @subscriptions, include:["*","learning_path.courses"]
   end
 
   # GET /subscriptions/1

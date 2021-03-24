@@ -12,7 +12,6 @@ class LearningPathsController < ApplicationController
             path.categories.any? { |id| id.id == catId.to_i }
           end
         end
-      puts categories_ids.class
     end
     render json: @learning_paths
   end
