@@ -55,6 +55,7 @@ class Stripe::OneTimePaymentsController < ApplicationController
 
     invoice = Stripe::Invoice.create({
       customer: customer_stripe_id,
+      description: description,
       auto_advance: false,
     })
 
