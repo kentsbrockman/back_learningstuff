@@ -33,12 +33,15 @@ class User < ApplicationRecord
 
   after_create :send_welcome_email
 
-  def subscribe(learning_path, customer_stripe_id)
-    @subscription = Subscription.create(user: self, learning_path: learning_path)
-    @subscription.learning_path.courses.each do |course|
+  def subscribe(learning_path, customer_stripe_id, total_amount)
+    subscription = Subscription.create(user: self, learning_path: learning_path)
+    stored_payment = OneTimePayment.create(subscription: subscription, total_amount: total_amount)
+    subscription.learning_path.courses.each do |course|
       ProgressState.create(course: course, user: self)
     end
-    self.update!(customer_stripe_id: customer_stripe_id)
+    if self.customer_stripe_id.nil?
+      self.update!(customer_stripe_id: customer_stripe_id)
+    end
   end
 
   private
