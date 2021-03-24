@@ -9,4 +9,8 @@ class Course < ApplicationRecord
   def first_chapter
     self.chapters.sort_by(&:position).first
   end
+
+  def number_lessons
+    self.chapters.map{|chapter| chapter.lessons.size}.inject(0){|sum,x|sum + x}
+  end
 end

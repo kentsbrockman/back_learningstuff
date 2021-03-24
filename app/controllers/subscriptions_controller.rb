@@ -6,7 +6,7 @@ class SubscriptionsController < ApplicationController
   def index
     @subscriptions = current_user.subscriptions
 
-    render json: @subscriptions, include:["*","learning_path.courses"]
+    render json: @subscriptions, include:["*","learning_path.courses", "learning_path.courses.progress_states"]
   end
 
   # GET /subscriptions/1
