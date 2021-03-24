@@ -1,8 +1,4 @@
-require 'pry'
-require 'json'
-
 class Stripe::OneTimePaymentsController < ApplicationController
-
 
   def create
     total = params[:total]
@@ -30,9 +26,7 @@ class Stripe::OneTimePaymentsController < ApplicationController
       '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: stripe_one_time_payments_cancel_url
     )
-
     render json: session
-
   end
 
   def success
