@@ -3,11 +3,15 @@ class LearningPathsController < ApplicationController
 
   # GET /learning_paths
   def index
-    @learning_paths = LearningPath.all
+    if params[:single]
+      @learning_paths = LearningPath.all.select { |path| path.courses.length === 1 }
+    else
+      @learning_paths = LearningPath.all
+    end
     if params[:categories]
       categories_ids = params[:categories].split(',')
       @learning_paths =
-        LearningPath.all.filter do |path|
+      @learning_paths.filter do |path|
           categories_ids.all? do |catId|
             path.categories.any? { |id| id.id == catId.to_i }
           end
@@ -25,6 +29,6 @@ class LearningPathsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_learning_path
-    @learning_path = LearningPath.find(params[:id])
+    @learning_path = LearningPath.find_by!(slug: params[:id])
   end
 end

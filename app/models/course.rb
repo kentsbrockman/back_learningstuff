@@ -1,7 +1,8 @@
 class Course < ApplicationRecord
   include GithubRepository
 
-  validates :title, presence: true, uniqueness: true
+  after_create :add_slug
+  validates :title, presence: true
 
   has_and_belongs_to_many :learning_paths, dependent: :destroy
   has_many :chapters, dependent: :destroy
@@ -10,6 +11,10 @@ class Course < ApplicationRecord
 
   def first_chapter
     self.chapters.sort_by(&:position).first
+  end
+
+  def add_slug
+    self.update(slug: self.title.gsub(/_/, '-').parameterize)
   end
 
   def import_content(github_url)
