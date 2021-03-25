@@ -14,8 +14,6 @@ class ReplyCommentsController < ApplicationController
     render json: @reply_comments
   end
 
-
-
   # POST /reply_comments
   def create
     @reply_comment = @comment.reply_comments.new(reply_comment_params)
@@ -34,6 +32,7 @@ class ReplyCommentsController < ApplicationController
     end
 
     def set_comment
-      @comment = Comment.find(params[:id])
+      @comment = Comment.find(params[:comment_id])
     end
+
 end
