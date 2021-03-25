@@ -17,11 +17,8 @@ class UserSerializer < ActiveModel::Serializer
   has_many :subscriptions
   has_many :progress_lessons
   has_many :read_lessons
-<<<<<<< HEAD
   has_many :reply_comments
-=======
   has_many :categories
->>>>>>> master
 
   def avatar
     if object.avatar.attached?
