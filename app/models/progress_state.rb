@@ -16,5 +16,4 @@ class ProgressState < ApplicationRecord
     end
   end
 
-  scope :correct, -> { where(user_id: 1) }
 end
