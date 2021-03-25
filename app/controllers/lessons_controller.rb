@@ -3,6 +3,7 @@ class LessonsController < ApplicationController
   before_action :get_chapter
   before_action :authenticate_user!
   before_action :check_user_is_subscribed
+  before_action :check_user_lesson_completed, only: [:show]
   before_action :set_lesson, only: %i[show]
   before_action :check_correct_course
   before_action :check_correct_chapter, only: [:show]
