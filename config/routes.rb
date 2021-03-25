@@ -16,7 +16,7 @@ Rails
                }
 
     resources :users, defaults: { format: :json } do
-      resources :subscriptions, only: [:index, :create]
+      resources :subscriptions, only: %i[index create]
       resources :avatars, only: [:create]
     end
 
@@ -39,6 +39,8 @@ Rails
     namespace :admin do
       resources :users, only: %i[index update destroy]
       resources :learning_paths
+      resources :categories
+      resources :courses, only: %i[index destroy create]
     end
 
     resources :courses, only: %i[index show] do
