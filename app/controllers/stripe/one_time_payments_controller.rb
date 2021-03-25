@@ -39,11 +39,11 @@ class Stripe::OneTimePaymentsController < ApplicationController
     total_amount = session.amount_total
     user.subscribe(learning_path, customer_stripe_id, total_amount)
     create_invoice(customer_stripe_id, total_amount, learning_path.title)
-    redirect_to ENV['MYCOURSES_URL']
+    redirect_to ENV['STRIPE_SUCCESS_URL']
   end
 
   def cancel
-    redirect_to ENV['MYCOURSES_URL']
+    redirect_to ENV['STRIPE_CANCEL_URL']
   end
 
   private
