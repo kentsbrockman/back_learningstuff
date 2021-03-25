@@ -16,4 +16,7 @@ class ProgressState < ApplicationRecord
     end
   end
 
+  def user_id
+    self.user.id
+  end
 end
