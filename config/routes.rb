@@ -49,7 +49,9 @@ Rails
           resources :questions, only: %i[index show]
           post '/results', to: 'progress_lessons#create'
 
-          resources :comments
+          resources :comments do
+            resources :reply_comments, only: %i[index create]
+          end
         end
       end
     end
