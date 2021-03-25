@@ -168,6 +168,27 @@ code.courses << [
 ]
 code.categories << [Category.find_by(title: 'Web developer'), Category.find_by(title: 'Javascript'), Category.create(title: 'Management')]
 
+
+data_science = LearningPath.create(title: 'Immersion en data science', price_in_cents: 100_000)
+data_science.courses << [
+  Course.find_by(title: "Python n'est pas un serpent !"),
+  Course.find_by(title: "Python n'est toujours pas un serpent !"),
+]
+
+data_science.categories << [Category.find_by(title: 'Python')]
+
+misc = LearningPath.create(title: 'Apprenez un peu de tout', price_in_cents: 400_000)
+misc.courses << [
+  Course.find_by(title: "Ruby on rails est tout ce dont vous avez toujours rêvé !"),
+  Course.find_by(title: "Entraine-toi à l'algorithmie"),
+  Course.find_by(title: "Découvrez le monde des start-ups"),
+  Course.find_by(title: "Initiez-vous à la gestion de projet agile"),
+  Course.find_by(title: "Apprenez à créer votre site web avec HTML5 et CSS3"),
+]
+
+misc.categories << [Category.find_by(title: 'Business'), Category.find_by(title: 'Web developer'), Category.find_by(title: 'Ruby')]
+
+
 #Solo courses, with learning paths and categories
 start =
   LearningPath.create(

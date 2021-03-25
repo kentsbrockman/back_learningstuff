@@ -3,8 +3,10 @@ class LearningPathsController < ApplicationController
 
   # GET /learning_paths
   def index
-    if params[:single]
+    if params[:single] === "true"
       @learning_paths = LearningPath.all.select { |path| path.courses.length === 1 }
+    elsif params[:single] === "false"
+      @learning_paths = LearningPath.all.select { |path| path.courses.length > 1 }
     else
       @learning_paths = LearningPath.all
     end
