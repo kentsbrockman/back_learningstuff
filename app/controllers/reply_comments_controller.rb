@@ -14,21 +14,13 @@ class ReplyCommentsController < ApplicationController
     render json: @reply_comments
   end
 
-  # GET /reply_comments/1
-  def show
-    render json: @reply_comment
-  end
+
 
   # POST /reply_comments
   def create
     @reply_comment = @comment.reply_comments.new(reply_comment_params)
   end
 
-
-  # DELETE /reply_comments/1
-  def destroy
-    @reply_comment.destroy
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -39,5 +31,9 @@ class ReplyCommentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def reply_comment_params
       params.require(:reply_comment).permit(:content, :user_id, :comment_id)
+    end
+
+    def set_comment
+      @comment = Comment.find(params[:id])
     end
 end
