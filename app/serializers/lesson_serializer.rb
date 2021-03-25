@@ -15,6 +15,10 @@ class LessonSerializer < ActiveModel::Serializer
   def allowed
     course = object.chapter.course
     is_current_lesson = course.first_chapter.first_lesson == object
-    current_user &&  (is_current_lesson || current_user.read_lessons.include?(object.previous_lesson))
+    current_user &&
+      (
+        is_current_lesson ||
+          current_user.read_lessons.include?(object.previous_lesson)
+      )
   end
 end
