@@ -10,6 +10,6 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
-    render json: @course, include: ['*','chapters', 'chapters.lessons']
+    render json: @course, include: %w[* chapters chapters.lessons]
   end
 end
