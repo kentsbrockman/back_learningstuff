@@ -16,8 +16,9 @@ class ApplicationController < ActionController::API
     @lesson = Lesson.find(params[:id]) if params[:id]
     @course = Course.find(params[:course_id]) if params[:course_id]
     @progress_lessons = current_user.progress_states.find_by(course:@course).progress_lessons
-    @current_lesson = @progress_lessons.last.lesson.next_lesson
-    if @progress_lessons.filter{|a| a.lesson == @lesson}.empty? && @current_lesson != @lesson
+    learning_paths_ids = @lesson.chapter.course.learning_paths.map{|a| a.id}
+    @current_lesson = current_user.subscriptions.filter{|a| learning_paths_ids.include?(a.learning_path_id)}.first.current_lesson
+    if @progress_lessons&.filter{|a| a.lesson == @lesson}.empty? && @current_lesson != @lesson
       render json: {
         success: false,
         error: 'You cannot access this lesson please finish the previous one'
