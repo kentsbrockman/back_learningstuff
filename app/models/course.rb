@@ -19,7 +19,7 @@ class Course < ApplicationRecord
 
   def import_content(github_url)
     uri = get_repository_uri(github_url)
-    self.update(title: get_content(uri, '/course_title.txt')&.squish)
+    self.update(title: get_content(uri, '/course_title.txt'))
 
     chapters_contents = client.contents(uri)
     chapters_contents&.each do |chapter|
