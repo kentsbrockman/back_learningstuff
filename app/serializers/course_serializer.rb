@@ -5,6 +5,6 @@ class CourseSerializer < ActiveModel::Serializer
   has_many :chapters
 
   def number_lessons
-    object.number_lessons
+    object.lessons.size
   end
 end

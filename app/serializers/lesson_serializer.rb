@@ -13,6 +13,7 @@ class LessonSerializer < ActiveModel::Serializer
   has_many :progress_states
 
   def allowed
+    !current_user.read_lessons.include?(object.previous_lesson)
     course = object.chapter.course
     learning_paths_ids = course&.learning_paths&.map{|a| a.id}
     is_current_lesson = current_user&.subscriptions&.filter{|a| learning_paths_ids&.include?(a&.learning_path_id)}&.first&.current_lesson == object

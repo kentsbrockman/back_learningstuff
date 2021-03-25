@@ -9,8 +9,8 @@ class ProgressState < ApplicationRecord
   end
 
   def progression
-    if self.course.number_lessons.nonzero?
-      self.number_lessons_completed * 100 / self.course.number_lessons * 100 / 100
+    if self.course.lessons.size.nonzero?
+      self.number_lessons_completed * 100 / self.course.lessons.size * 100 / 100
     else
       100
     end

@@ -12,10 +12,6 @@ class Course < ApplicationRecord
     self.chapters.sort_by(&:position).first
   end
 
-  def number_lessons
-    self.chapters.map{|chapter| chapter.lessons.size}.inject(0){|sum,x|sum + x}
-  end
-
   def import_content(github_url)
     uri = get_repository_uri(github_url)
     self.update(title: get_content(uri, '/course_title.txt').squish)
