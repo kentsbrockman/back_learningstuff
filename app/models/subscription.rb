@@ -11,4 +11,12 @@ class Subscription < ApplicationRecord
   def send_subscription_confirmation_email
     UserMailer.subscription_confirmation_email(self).deliver_now
   end
+
+  def current_lesson
+    if self.learning_path.courses.first.progress_states.find_by(user:self.user).progress_lessons.empty?
+      self.learning_path.courses.first.first_chapter&.first_lesson
+    else
+      self.learning_path.courses.first.progress_states.find_by(user:self.user).progress_lessons.last&.lesson&.next_lesson
+    end
+  end
 end

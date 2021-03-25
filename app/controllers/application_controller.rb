@@ -11,6 +11,20 @@ class ApplicationController < ActionController::API
              status: 401
     end
   end
+  
+  def check_user_lesson_completed
+    @lesson = Lesson.find(params[:id]) if params[:id]
+    @course = Course.find(params[:course_id]) if params[:course_id]
+ 
+    if !current_user.read_lessons.include?(@lesson.previous_lesson) && @course.first_chapter.first_lesson != @lesson
+      render json: {
+        success: false,
+        error: 'You cannot access this lesson please finish the previous one'
+      },
+      status: 401
+    end
+  end
+
 
   def get_course
     @course = Course.find(params[:course_id]) if params[:course_id]
