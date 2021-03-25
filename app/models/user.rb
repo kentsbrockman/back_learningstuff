@@ -33,14 +33,20 @@ class User < ApplicationRecord
   scope :admins, -> { where(role: 'admin') }
 
   after_create :send_welcome_email
+
   # after_update :send_email_approval
 
   def subscribe(learning_path, customer_stripe_id, total_amount)
     subscription = self.subscriptions.create(learning_path: learning_path)
-    stored_payment = OneTimePayment.create(subscription: subscription, total_amount: total_amount)
-    subscription.learning_path.courses.each do |course|
-      self.progress_states.create(course: course)
-    end
+    stored_payment =
+      OneTimePayment.create(
+        subscription: subscription,
+        total_amount: total_amount
+      )
+    subscription
+      .learning_path
+      .courses
+      .each { |course| self.progress_states.create(course: course) }
     if self.customer_stripe_id.nil?
       self.update!(customer_stripe_id: customer_stripe_id)
     end

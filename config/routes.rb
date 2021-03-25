@@ -16,7 +16,7 @@ Rails
                }
 
     resources :users, defaults: { format: :json } do
-      resources :subscriptions, only: [:index, :create]
+      resources :subscriptions, only: %i[index create]
       resources :avatars, only: [:create]
     end
 
