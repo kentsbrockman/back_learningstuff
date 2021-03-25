@@ -5,11 +5,11 @@ class ReplyCommentsController < ApplicationController
   before_action :get_lesson
   before_action :authenticate_user!
   before_action :check_user_is_subscribed
-
+  before action :set_comment
 
   # GET /reply_comments
   def index
-    @reply_comments = ReplyComment.all
+    @reply_comments = @comment.reply_comments
 
     render json: @reply_comments
   end
@@ -21,23 +21,9 @@ class ReplyCommentsController < ApplicationController
 
   # POST /reply_comments
   def create
-    @reply_comment = ReplyComment.new(reply_comment_params)
-
-    if @reply_comment.save
-      render json: @reply_comment, status: :created
-    else
-      render json: @reply_comment.errors, status: :unprocessable_entity
-    end
+    @reply_comment = @comment.reply_comments.new(reply_comment_params)
   end
 
-  # PATCH/PUT /reply_comments/1
-  def update
-    if @reply_comment.update(reply_comment_params)
-      render json: @reply_comment
-    else
-      render json: @reply_comment.errors, status: :unprocessable_entity
-    end
-  end
 
   # DELETE /reply_comments/1
   def destroy

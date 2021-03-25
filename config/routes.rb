@@ -50,7 +50,7 @@ Rails
           post '/results', to: 'progress_lessons#create'
 
           resources :comments do
-            resources :reply_comments
+            resources :reply_comments, only: [index create]
           end
         end
       end
