@@ -28,7 +28,5 @@ class Course < ApplicationRecord
         @chapter.import_content(uri, chapter)
       end
     end
-
-    puts 'All done!'
   end
 end

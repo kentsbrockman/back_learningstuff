@@ -167,6 +167,16 @@ ActiveRecord::Schema.define(version: 2021_03_25_094026) do
     t.index ["lesson_id"], name: "index_questions_on_lesson_id"
   end
 
+  create_table "reply_comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_reply_comments_on_comment_id"
+    t.index ["user_id"], name: "index_reply_comments_on_user_id"
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "learning_path_id", null: false
@@ -211,6 +221,8 @@ ActiveRecord::Schema.define(version: 2021_03_25_094026) do
   add_foreign_key "progress_states", "courses"
   add_foreign_key "progress_states", "users"
   add_foreign_key "questions", "lessons"
+  add_foreign_key "reply_comments", "comments"
+  add_foreign_key "reply_comments", "users"
   add_foreign_key "subscriptions", "learning_paths"
   add_foreign_key "subscriptions", "users"
 end
