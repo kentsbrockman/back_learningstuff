@@ -11,12 +11,17 @@ class UserSerializer < ActiveModel::Serializer
              :linkedin_address,
              :job,
              :customer_stripe_id,
-             :avatar
+             :avatar,
+             :invoices
   has_many :comments
   has_many :subscriptions
   has_many :progress_lessons
   has_many :read_lessons
+<<<<<<< HEAD
   has_many :reply_comments
+=======
+  has_many :categories
+>>>>>>> master
 
   def avatar
     if object.avatar.attached?
@@ -26,5 +31,9 @@ class UserSerializer < ActiveModel::Serializer
         'http://localhost:8080' + rails_blob_path(object.avatar)
       end
     end
+  end
+
+  def invoices
+    Stripe::Invoice.list(customer: current_user.customer_stripe_id)
   end
 end

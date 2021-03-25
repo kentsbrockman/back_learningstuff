@@ -72,6 +72,11 @@ ActiveRecord::Schema.define(version: 2021_03_24_160903) do
     t.bigint "learning_path_id", null: false
   end
 
+  create_table "categories_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+  end
+
   create_table "chapters", force: :cascade do |t|
     t.bigint "course_id", null: false
     t.integer "position"
