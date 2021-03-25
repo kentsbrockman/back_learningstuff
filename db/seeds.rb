@@ -137,7 +137,7 @@ Category.create(title: 'Coding')
 
 # LEARNING PATHS
 business =
-  LearningPath.create(title: 'Start your own business', price_in_cents: 50000)
+  LearningPath.create(title: 'Start your own business', price_in_cents: 50_000)
 business.courses << [
   Course.find_by(title: 'Speak in public'),
   Course.find_by(title: 'Learn about Lean Startup'),
@@ -147,7 +147,7 @@ business.courses << [
 business.categories << [Category.find_by(title: 'Business')]
 
 code =
-  LearningPath.create(title: 'Become a web developer', price_in_cents: 80000)
+  LearningPath.create(title: 'Become a web developer', price_in_cents: 80_000)
 code.courses << [
   Course.find_by(title: 'Build Your First Web Pages With HTML and CSS'),
   Course.find_by(title: 'Learn Programming With JavaScript'),
@@ -159,18 +159,16 @@ code.categories << [Category.find_by(title: 'Web developper')]
 start =
   LearningPath.create(
     title: 'Get started with web development',
-    price_in_cents: 10000
+    price_in_cents: 10_000
   )
 start.courses <<
   Course.find_by(title: 'Build Your First Web Pages With HTML and CSS')
-start.categories << [
-  Category.find_by(title: 'Coding')
-]
+start.categories << [Category.find_by(title: 'Coding')]
 
 python =
   LearningPath.create(
     title: 'Get started with web Python',
-    price_in_cents: 20000
+    price_in_cents: 20_000
   )
 python.courses << Course.find_by(title: 'Python is not a snake!')
 python.categories << [
@@ -179,22 +177,14 @@ python.categories << [
 ]
 
 pythonadv =
-  LearningPath.create(
-    title: 'Advanced Python',
-    price_in_cents: 30000
-  )
-pythonadv.courses <<
-  Course.find_by(title: 'Python is still not a snake!')
+  LearningPath.create(title: 'Advanced Python', price_in_cents: 30_000)
+pythonadv.courses << Course.find_by(title: 'Python is still not a snake!')
 pythonadv.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Python')
 ]
 
-ruby =
-  LearningPath.create(
-    title: 'Ruby on rails',
-    price_in_cents: 30000
-  )
+ruby = LearningPath.create(title: 'Ruby on rails', price_in_cents: 30_000)
 ruby.courses <<
   Course.find_by(title: 'Ruby on rails is awesome for creating new apps!')
 ruby.categories << [
@@ -203,33 +193,21 @@ ruby.categories << [
 ]
 
 jsnoob =
-  LearningPath.create(
-    title: 'Javascript for noobs',
-    price_in_cents: 5000
-  )
-jsnoob.courses <<
-  Course.find_by(title: 'Start learning code with Javascript')
+  LearningPath.create(title: 'Javascript for noobs', price_in_cents: 5000)
+jsnoob.courses << Course.find_by(title: 'Start learning code with Javascript')
 jsnoob.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Javascript')
 ]
 
 codewars =
-  LearningPath.create(
-    title: 'Code Wars for training',
-    price_in_cents: 5000
-  )
+  LearningPath.create(title: 'Code Wars for training', price_in_cents: 5000)
 codewars.courses <<
   Course.find_by(title: 'Train your coding spirit with Code Wars')
 codewars.categories << [Category.find_by(title: 'Coding')]
 
-jsadv =
-  LearningPath.create(
-    title: 'Advanced Javascript',
-    price_in_cents: 5000
-  )
-jsadv.courses <<
-  Course.find_by(title: 'Javascript is good for you')
+jsadv = LearningPath.create(title: 'Advanced Javascript', price_in_cents: 5000)
+jsadv.courses << Course.find_by(title: 'Javascript is good for you')
 jsadv.categories << [
   Category.find_by(title: 'Coding'),
   Category.find_by(title: 'Javascript')
@@ -397,14 +375,22 @@ tp Lesson.all
 
 student = User.find_by(email: 'student@learning.com')
 
-student.subscriptions.create(learning_path: LearningPath.find_by(title: 'Become a web developer'))
-student.subscriptions.last.courses.each do |course|
-  student.progress_states.find_or_create_by(course: course)
-end
+student.subscriptions.create(
+  learning_path: LearningPath.find_by(title: 'Become a web developer')
+)
+student
+  .subscriptions
+  .last
+  .courses
+  .each { |course| student.progress_states.find_or_create_by(course: course) }
 
-student.subscriptions.create(learning_path: LearningPath.find_by(title: 'Get started with web development'))
-student.subscriptions.last.courses.each do |course|
-  student.progress_states.find_or_create_by(course: course)
-end
+student.subscriptions.create(
+  learning_path: LearningPath.find_by(title: 'Get started with web development')
+)
+student
+  .subscriptions
+  .last
+  .courses
+  .each { |course| student.progress_states.find_or_create_by(course: course) }
 puts '-------------------- Subscription (with progressState) table --------------------'
 tp Subscription.all
