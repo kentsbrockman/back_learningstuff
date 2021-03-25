@@ -46,6 +46,9 @@ gem 'stripe', '~> 5.30'
 # AWS to proceed with S3 in production environment
 gem 'aws-sdk-s3', '~> 1.91', require: false
 
+# Fetching content from github
+gem 'octokit', '~> 4.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 4.0.2'
