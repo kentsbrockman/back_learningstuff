@@ -5,7 +5,7 @@ class ReplyCommentsController < ApplicationController
   before_action :get_lesson
   before_action :authenticate_user!
   before_action :check_user_is_subscribed
-  before action :set_comment
+  before_action :set_comment
 
   # GET /reply_comments
   def index
