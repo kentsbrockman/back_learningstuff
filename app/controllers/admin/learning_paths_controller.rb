@@ -35,6 +35,15 @@ class Admin::LearningPathsController < ApplicationController
       @course = Course.find(params[:added_course_id])
       @learning_path.courses << @course
       render json: @learning_path
+    elsif params[:added_category_id]
+      @categories_id = params[:added_category_id].to_i
+      if @learning_path.categories.ids.include?(@categories_id)
+        @learning_path.categories.delete(Category.find(@categories_id))
+        render json: @learning_path
+      else
+        @learning_path.categories << Category.find(@categories_id)
+        render json: @learning_path
+      end
     else
       if @learning_path.update(learning_path_params)
         render json: @learning_path
@@ -65,7 +74,8 @@ class Admin::LearningPathsController < ApplicationController
         :price_in_cents,
         :deleted_course_id,
         :added_course_id,
-        :selected_courses_ids
+        :selected_courses_ids,
+        :added_category_id
       )
   end
 end

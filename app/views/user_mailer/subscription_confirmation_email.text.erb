@@ -1,6 +1,4 @@
-Hello <%= @user.first_name %> <%= @user.last_name %>!
-
-You just signed up for the subscription "<%= @subscription.learning_path.title %>".
-You can manage your registrations on <a href=<%= ENV['PROFILE_URL'] %>><%= ENV['PROFILE_URL'] %></a>
-
-Have a nice day!
+<%= t(:hello) %>  <%= @user.first_name %> <%= @user.last_name %>!
+<%= t(:you_just_signed_up) %> "<%= @subscription.learning_path.title %>" <%= t(:on)%> LearningStuff.
+<%= t(:find_your_subscriptions) %> <%= ENV['PROFILE_URL'] %>
+    <p><%= t(:see_you) %>! </p>
