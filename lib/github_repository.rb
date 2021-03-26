@@ -37,7 +37,8 @@ module GithubRepository
   def get_content(repository_uri, path_to_file = '')
     begin
       coded = client.contents(repository_uri, path: path_to_file).content
-      Base64.decode64(coded)
+      decoded = Base64.decode64(coded)
+      decoded&.squish
     rescue StandardError
       puts "Couldn't get content of" + path_to_file + ', might not exist'
       return nil
