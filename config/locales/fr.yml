@@ -23,3 +23,7 @@ fr:
   you_used_this_email: Vous venez de vous inscrire avec cette adresse email
   admin_is_reviewing: Un administrateur est en train de revoir l'approbation de votre compte
   you_will_received_email: Vous recevrez un email lorsqu'il sera approuvé.
+  request_password: Quelqu'un a demande un lien pour changer de mot de passe. Vous pouvez le faire via le lien ci-desous.
+  change_password: Changer de mot de passe
+  did_not_request: Si vous n'etes pas a l'origine de cette requete, veuillez ignorer cet email.
+  password_wont_change: Votre mot de passe ne changera pas tant que vous ne cliquez pas sur le lien et en cree un nouveau.
