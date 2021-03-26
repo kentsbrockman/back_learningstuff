@@ -28,7 +28,9 @@ class UserMailer < ApplicationMailer
     mail(
       from: 'admin-learningstuff@yopmail.com',
       to: @user.email,
-      subject: t(:your_subscription_for) + " '" + @subscription.learning_path.title + "' " + t(:was_confirmed) + " !"
+      subject:
+        t(:your_subscription_for) + " '" + @subscription.learning_path.title +
+          "' " + t(:was_confirmed) + ' !'
     )
   end
 end
