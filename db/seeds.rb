@@ -229,7 +229,7 @@ code.courses << [
 code.categories << [
   Category.find_by(title: 'Web developer'),
   Category.find_by(title: 'Javascript'),
-  Category.create(title: 'Management')
+  Category.find_by(title: 'Management')
 ]
 
 data_science =

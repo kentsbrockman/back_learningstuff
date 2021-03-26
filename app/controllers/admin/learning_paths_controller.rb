@@ -36,9 +36,14 @@ class Admin::LearningPathsController < ApplicationController
       @learning_path.courses << @course
       render json: @learning_path
     elsif params[:added_category_id]
-      @categories_ids = params[:added_category_id].split(',')
-      @categories_ids.each { |id| @learning_path.categories << Category.find(id)}
-      render json: @learning_path
+      @categories_id = params[:added_category_id].to_i
+      if @learning_path.categories.ids.include?(@categories_id)
+        @learning_path.categories.delete(Category.find(@categories_id))
+        render json: @learning_path
+      else
+        @learning_path.categories << Category.find(@categories_id)
+        render json: @learning_path
+      end
     else
       if @learning_path.update(learning_path_params)
         render json: @learning_path
