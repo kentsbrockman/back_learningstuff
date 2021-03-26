@@ -29,11 +29,11 @@ class Lesson < ApplicationRecord
 
   def import_content(github_uri, lesson)
     self.title =
-      get_content(github_uri, lesson.path + '/lesson_title.txt')&.squish
+      get_content(github_uri, lesson.path + '/lesson_title.txt')
     self.content =
-      get_content(github_uri, lesson.path + '/lesson_content.txt')&.squish
+      get_content(github_uri, lesson.path + '/lesson_content.txt')
     self.video_url =
-      get_content(github_uri, lesson.path + '/lesson_video.txt')&.squish
+      get_content(github_uri, lesson.path + '/lesson_video.txt')
     self.position = lesson.name.split('_')[1]
     self.save!
 
