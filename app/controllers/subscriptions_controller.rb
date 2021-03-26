@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
     if current_user.learning_paths.include?(
          LearningPath.find(params[:learning_path_id])
        )
-      render json: { errors: 'Already Subscribed' }, status: :bad_request
+      render json: { errors: (:already_subscribed) }, status: :bad_request
     else
       @subscription = current_user.subscriptions.new(subscription_params)
       if @subscription.save

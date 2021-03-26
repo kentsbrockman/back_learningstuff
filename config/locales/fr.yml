@@ -1,0 +1,29 @@
+fr:
+  hello: "Bonjour monde"
+  you_cant_access_this_lesson_finish_previous: 'Vous devez terminer la leçon précédente pour accéder à celle-ci'
+  not_allowed_to_see_page: "Vous n'êtes pas autorisé à voir cette page"
+  no_avatar_attached: 'Aucune photo de profil'
+  no_content: "Aucun contenu"
+  chapter_doesnt_match: "Ce chapitre ne fait pas partie de ce cours"
+  lesson_doesnt_match: "Cette leçon ne fait pas partie de ce chapitre"
+  already_subscribed: "Vous êtes déjà inscrit à cette formation"
+  welcome_email_subject: "Bienvenue chez LearningStuff !"
+  account_approved_subject: "Votre compte a été approuvé"
+  your_subscription_for: "Votre inscription pour"
+  was_confirmed: "a bien été confirmée"
+  hello: Bonjour
+  your_account: Votre compte
+  has_been_approved: a été approuvé
+  check_out_website: Retrouvez tous nos cours et votre profil sur
+  our_website: notre site
+  see_you: A bientôt
+  find_your_subscriptions: Retrouvez vos réservations sur
+  you_just_signed_up: Vous venez de vous inscrire pour
+  on: sur
+  you_used_this_email: Vous venez de vous inscrire avec cette adresse email
+  admin_is_reviewing: Un administrateur est en train de revoir l'approbation de votre compte
+  you_will_received_email: Vous recevrez un email lorsqu'il sera approuvé.
+  request_password: Quelqu'un a demande un lien pour changer de mot de passe. Vous pouvez le faire via le lien ci-desous.
+  change_password: Changer de mot de passe
+  did_not_request: Si vous n'etes pas a l'origine de cette requete, veuillez ignorer cet email.
+  password_wont_change: Votre mot de passe ne changera pas tant que vous ne cliquez pas sur le lien et en cree un nouveau.

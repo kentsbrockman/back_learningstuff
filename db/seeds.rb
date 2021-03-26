@@ -36,6 +36,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!(Comment.table_name)
 
 #Admin
 
+
 User.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
@@ -45,6 +46,19 @@ User.create(
   is_reviewed: true,
   role: 'admin'
 )
+
+4.times do |index|
+  i = index + 1
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: 'admin' + i.to_s + '@learning.com',
+    password: 'bonjour',
+    is_approved: true,
+    is_reviewed: true,
+    role: 'admin'
+  )
+end
 
 #Teacher
 
@@ -58,6 +72,20 @@ User.create(
   role: 'teacher'
 )
 
+
+4.times do |index|
+  i = index + 1
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: 'teacher' + i.to_s + '@learning.com',
+    password: 'bonjour',
+    is_approved: true,
+    is_reviewed: true,
+    role: 'teacher'
+  )
+end
+
 #Student
 
 User.create(
@@ -70,21 +98,22 @@ User.create(
   role: 'student'
 )
 
-# ------- One user of each role approved -------
-
-3.times do |student|
+4.times do |index|
+  i = index + 1
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: 'fakerstudent',
+    email: 'student' + i.to_s + '@learning.com',
+    password: 'bonjour',
     is_approved: true,
     is_reviewed: true,
     role: 'student'
   )
 end
 
-3.times do |student|
+# ------- One user of each role approved -------
+
+8.times do |student|
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -229,7 +258,7 @@ code.courses << [
 code.categories << [
   Category.find_by(title: 'Web developer'),
   Category.find_by(title: 'Javascript'),
-  Category.create(title: 'Management')
+  Category.find_by(title: 'Management')
 ]
 
 data_science =
@@ -383,7 +412,7 @@ Lesson.create(
   position: 1,
   chapter: webpage,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -391,7 +420,7 @@ Lesson.create(
   position: 2,
   chapter: webpage,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -399,7 +428,7 @@ Lesson.create(
   position: 3,
   chapter: webpage,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -407,7 +436,7 @@ Lesson.create(
   position: 1,
   chapter: html,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -415,7 +444,7 @@ Lesson.create(
   position: 2,
   chapter: html,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -423,7 +452,7 @@ Lesson.create(
   position: 3,
   chapter: html,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -431,7 +460,7 @@ Lesson.create(
   position: 1,
   chapter: css,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -439,7 +468,7 @@ Lesson.create(
   position: 2,
   chapter: css,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.create(
@@ -447,19 +476,19 @@ Lesson.create(
   position: 3,
   chapter: css,
   content: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-  video_url: 'https://www.youtube.com/watch?v=i_dOaAqx6GU'
+  video_url: 'https://learningstuff-website.s3.eu-west-3.amazonaws.com/De%CC%81mystifier+Stripe+version+2019.mp4'
 )
 
 Lesson.all.each do |lesson|
   Comment.create(
-    content: 'Hello everybody',
+    content: "Bonjour, n'hésitez pas si vous avez des questions !",
     lesson: lesson,
-    user: User.all.sample
+    user: User.where(role: "teacher").sample
   )
   Comment.create(
-    content: 'How are you today',
+    content: "Hello, est-ce que quelqu'un peut m'expliquer la question 2 du quizz svp ?",
     lesson: lesson,
-    user: User.all.sample
+    user: User.where(role: "student").sample
   )
   2.times do
     Question.create(
@@ -519,28 +548,31 @@ Course
   end
 
 #Subscriptions
+prefix = "student"
+students = User.where("email LIKE ?", "#{prefix}%")
 
-student = User.find_by(email: 'student@learning.com')
+students.each do |student|
+  student.subscriptions.create(
+    learning_path: LearningPath.find_by(title: 'Devenez développeur web')
+  )
+  student
+    .subscriptions
+    .last
+    .courses
+    .each { |course| student.progress_states.find_or_create_by(course: course) }
 
-student.subscriptions.create(
-  learning_path: LearningPath.find_by(title: 'Devenez développeur web')
-)
-student
-  .subscriptions
-  .last
-  .courses
-  .each { |course| student.progress_states.find_or_create_by(course: course) }
-
-student.subscriptions.create(
-  learning_path:
-    LearningPath.find_by(
-      title: 'Apprenez à créer votre site web avec HTML5 et CSS3'
-    )
-)
-student
-  .subscriptions
-  .last
-  .courses
-  .each { |course| student.progress_states.find_or_create_by(course: course) }
+  student.subscriptions.create(
+    learning_path:
+      LearningPath.find_by(
+        title: 'Apprenez à créer votre site web avec HTML5 et CSS3'
+      )
+  )
+  student
+    .subscriptions
+    .last
+    .courses
+    .each { |course| student.progress_states.find_or_create_by(course: course) }
+end
 puts '-------------------- Subscription (with progressState) table --------------------'
 tp Subscription.all
+
