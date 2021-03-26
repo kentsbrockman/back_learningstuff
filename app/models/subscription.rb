@@ -17,20 +17,20 @@ class Subscription < ApplicationRecord
          .learning_path
          .courses
          .first
-         .progress_states
+         &.progress_states
          .find_by(user: self.user)
-         .progress_lessons
-         .empty?
+         &.progress_lessons
+         &.empty?
       self.learning_path.courses.first.first_chapter&.first_lesson
     else
       self
         .learning_path
         .courses
         .first
-        .progress_states
-        .find_by(user: self.user)
-        .progress_lessons
-        .last
+        &.progress_states
+        &.find_by(user: self.user)
+        &.progress_lessons
+        &.last
         &.lesson
         &.next_lesson
     end

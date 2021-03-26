@@ -9,7 +9,7 @@ class Admin::UsersController < Admin::BaseController
     else
       @users = User.all
     end
-    render json: @users
+    render json: @users, include:["*","subscriptions.learning_path"]
   end
 
   def show
