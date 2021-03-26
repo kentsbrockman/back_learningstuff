@@ -17,6 +17,12 @@ class ReplyCommentsController < ApplicationController
   # POST /reply_comments
   def create
     @reply_comment = @comment.reply_comments.new(reply_comment_params)
+
+    if @reply_comment.save
+      render json: @reply_comment, status: :created
+    else
+      render json: @reply_comment.errors, status: :unprocessable_entity
+    end
   end
 
   private
