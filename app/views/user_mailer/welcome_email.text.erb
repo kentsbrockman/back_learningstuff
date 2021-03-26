@@ -1,9 +1,7 @@
-Hi <%= @user.first_name %> <%= @user.last_name %> welcome at Form You!
- 
-You have used the following email: "<%= @user.email %>" to register.
- 
-An administrator is reviewing your registration. You will recieve a new mail as soon as you've been approved.
-Enjoy the available informations on courses at <a href=<%= @url %>>Learning Stuff</a>.
-Your Profile will be at <a href=<%= ENV['PROFILE_URL'] %>><%= ENV['PROFILE_URL'] %></a>
+<%= t(:hello) %> <%= @user.first_name %> <%= @user.last_name %> <%= t(:welcome_email_subject) %>!
+<%= t(:you_used_this_email) %> "<%= @user.email %>".
+ <%= t(:admin_is_reviewing) %> <%= t(:you_will_received_email)%>
 
-Cheers and visit us soon!
+<%= t(:check_out_website)%> <%= ENV['PROFILE_URL'] %>
+
+    <p><%= t(:see_you) %>! </p>

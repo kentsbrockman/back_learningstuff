@@ -14,6 +14,9 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :role, presence: true
 
+  after_create :send_welcome_email
+  after_update :send_email_approval
+
   has_many :subscriptions, dependent: :destroy
   has_many :courses, through: :subscriptions
   has_many :progress_states, dependent: :destroy
@@ -21,7 +24,6 @@ class User < ApplicationRecord
   has_many :read_lessons, through: :progress_lessons, source: :lesson
   has_many :learning_paths, through: :subscriptions
   has_and_belongs_to_many :categories, dependent: :destroy
-
   has_many :comments, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
   has_many :reply_comments, dependent: :destroy
@@ -33,10 +35,6 @@ class User < ApplicationRecord
   scope :students, -> { where(role: 'student') }
   scope :teachers, -> { where(role: 'teacher') }
   scope :admins, -> { where(role: 'admin') }
-
-  after_create :send_welcome_email
-
-  # after_update :send_email_approval
 
   def subscribe(learning_path, customer_stripe_id, total_amount)
     subscription = self.subscriptions.create(learning_path: learning_path)
@@ -61,6 +59,8 @@ class User < ApplicationRecord
   end
 
   def send_email_approval
-    UserMailer.email_approval(self).deliver_now
+    if saved_change_to_attribute?(:is_reviewed) && self.is_approved
+      UserMailer.email_approval(self).deliver_now
+    end
   end
 end
