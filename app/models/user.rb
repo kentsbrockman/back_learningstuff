@@ -7,6 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :registerable,
          :jwt_authenticatable,
+         :recoverable,
          jwt_revocation_strategy: self
 
   validates :first_name, presence: true
