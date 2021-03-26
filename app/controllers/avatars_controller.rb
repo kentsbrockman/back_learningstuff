@@ -5,7 +5,7 @@ class AvatarsController < ApplicationController
     if @user.avatar.attached?
       render json: @user.avatar
     else
-      render json: { errors: 'No profile picture attached' }, status: 400
+      render json: { errors: t(:no_avatar_attached) }, status: 400
     end
   end
 end

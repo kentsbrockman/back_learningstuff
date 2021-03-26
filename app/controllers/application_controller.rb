@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
     unless current_user.courses && current_user.courses.include?(@course)
       render json: {
                success: false,
-               error: 'You are not allowed to see this page'
+               error: t(:not_allowed_to_see_page)
              },
              status: 401
     end
@@ -20,8 +20,7 @@ class ApplicationController < ActionController::API
          @course.first_chapter.first_lesson != @lesson
       render json: {
                success: false,
-               error:
-                 'You cannot access this lesson please finish the previous one'
+               error: t(:you_cant_access_this_lesson_finish_previous)
              },
              status: 401
     end
@@ -51,7 +50,7 @@ class ApplicationController < ActionController::API
     unless current_user.role === 'admin' && current_user.is_approved
       render json: {
                success: false,
-               error: 'You are not allowed to see this page'
+               error: t(:not_allowed_to_see_page)
              },
              status: 401
     end
