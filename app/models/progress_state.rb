@@ -24,7 +24,7 @@ class ProgressState < ApplicationRecord
     if self.lessons.sort_by(&:position).last
       self.lessons.sort_by(&:position).last.next_lesson
     else
-      self.course.first_chapter.first_lesson
+      self.course.first_chapter&.first_lesson
     end
   end
 end
