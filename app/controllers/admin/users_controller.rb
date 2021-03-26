@@ -4,6 +4,8 @@ class Admin::UsersController < Admin::BaseController
   def index
     if params[:is_reviewed]
       @users = User.to_review
+    elsif params[:is_teacher]
+      @users = User.teachers
     else
       @users = User.all
     end

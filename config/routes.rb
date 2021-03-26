@@ -41,6 +41,7 @@ Rails
       resources :learning_paths
       resources :categories
       resources :courses, only: %i[index destroy create]
+      resources :subscriptions, only: %i[create update destroy]
     end
 
     resources :courses, only: %i[index show] do
