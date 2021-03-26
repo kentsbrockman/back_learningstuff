@@ -1,7 +1,6 @@
-Hello <%= @user.first_name %> <%= @user.last_name %>!
+<%= t(:hello) %> <%= @user.first_name %> <%= @user.last_name %>!
+<%= t(:your_account) %> "<%= @user.email %>" <%= t(:has_been_approved) %>!
 
-Your account "<%= @user.email %>" has been approved!
+<%= t(:check_out_website) %> <%= ENV['PROFILE_URL'] %>>
 
-Check out our new courses and your profile at <a href=<%= ENV['PROFILE_URL'] %>><%= ENV['PROFILE_URL'] %></a>
-
-Enjoy! 
+<p><%= t(:see_you) %>! </p>
