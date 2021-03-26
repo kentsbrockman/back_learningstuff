@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+class UserMailer < Devise::Mailer
   default from: 'admin-learningstuff@yopmail.com'
 
   @url = ENV['HOME_URL']
@@ -21,6 +21,10 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def reset_password_instructions(record, token, opts={})
+    super
+  end
+ 
   def subscription_confirmation_email(subscription)
     @user = subscription.user
     @subscription = subscription
