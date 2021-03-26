@@ -19,4 +19,12 @@ class ProgressState < ApplicationRecord
   def user_id
     self.user.id
   end
+
+  def current_lesson
+    if self.lessons.sort_by(&:position).last
+      self.lessons.sort_by(&:position).last.next_lesson
+    else
+      self.course.first_chapter.first_lesson
+    end
+  end
 end

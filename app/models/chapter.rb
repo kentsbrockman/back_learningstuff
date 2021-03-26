@@ -1,7 +1,7 @@
 class Chapter < ApplicationRecord
   include GithubRepository
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
   belongs_to :course
   has_many :lessons, dependent: :destroy
 
@@ -29,7 +29,7 @@ class Chapter < ApplicationRecord
     self.title =
       get_content(github_uri, chapter.path + '/chapter_title.txt').squish
     self.position = chapter.name.split('_')[1]
-    self.save
+    self.save!
 
     lessons_contents = client.contents(github_uri, path: chapter.path)
     lessons_contents&.each do |lesson|
