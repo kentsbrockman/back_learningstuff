@@ -14,12 +14,13 @@ class Course < ApplicationRecord
   end
 
   def add_slug
-    self.update(slug: self.title.gsub(/_/, '-').parameterize)
+    new_title = self.title.force_encoding('UTF-8')
+    self.update(slug: new_title.gsub(/_/, '-').parameterize)
   end
 
   def import_content(github_url)
     uri = get_repository_uri(github_url)
-    self.update(title: get_content(uri, '/course_title.txt'))
+    self.update(title: get_content(uri, '/course_title.txt')&.squish)
 
     chapters_contents = client.contents(uri)
     chapters_contents&.each do |chapter|

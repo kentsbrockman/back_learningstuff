@@ -26,7 +26,8 @@ class Chapter < ApplicationRecord
   end
 
   def import_content(github_uri, chapter)
-    self.title = get_content(github_uri, chapter.path + '/chapter_title.txt')
+    self.title =
+      get_content(github_uri, chapter.path + '/chapter_title.txt')&.squish
     self.position = chapter.name.split('_')[1]
     self.save!
 
