@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
       @lessons = @chapter.lessons.sort_by(&:position)
       render json: @lessons
     else
-      render json: { errors: 'No content' }, status: :bad_request
+      render json: { errors: t(:no_content) }, status: :bad_request
     end
   end
 
@@ -29,7 +29,7 @@ class LessonsController < ApplicationController
     unless @course.chapters.include?(@chapter)
       render json: {
                success: false,
-               error: "This chapter doesn't match this course"
+               error: t(:chapter_doesnt_match)
              },
              status: :bad_request
     end
@@ -39,7 +39,7 @@ class LessonsController < ApplicationController
     unless @chapter.lessons.include?(@lesson)
       render json: {
                success: false,
-               error: "This lesson doesn't match this chapter"
+               error: t(:lesson_doesnt_match)
              },
              status: :bad_request
     end

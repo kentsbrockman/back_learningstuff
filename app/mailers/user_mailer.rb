@@ -8,7 +8,7 @@ class UserMailer < Devise::Mailer
     mail(
       from: 'admin-learningstuff@yopmail.com',
       to: @user.email,
-      subject: 'welcome email'
+      subject: t(:welcome_email_subject)
     )
   end
 
@@ -17,7 +17,7 @@ class UserMailer < Devise::Mailer
     mail(
       from: 'admin-learningstuff@yopmail.com',
       to: @user.email,
-      subject: 'your account has been approved'
+      subject: t(:account_approved_subject)
     )
   end
 
@@ -26,15 +26,15 @@ class UserMailer < Devise::Mailer
   end
  
   def subscription_confirmation_email(subscription)
-    @user = User.find(subscription.user_id)
+    @user = subscription.user
     @subscription = subscription
     @courses = subscription.learning_path.courses
     mail(
       from: 'admin-learningstuff@yopmail.com',
       to: @user.email,
       subject:
-        'You subscribed for the ' + @subscription.learning_path.title +
-          ' learning path '
+        t(:your_subscription_for) + " '" + @subscription.learning_path.title +
+          "' " + t(:was_confirmed) + ' !'
     )
   end
 end
