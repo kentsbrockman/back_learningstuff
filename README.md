@@ -36,10 +36,7 @@ For the purpose of THP jury, we have created several accounts.
 
 You can sign up with either :
 
-- admin1@learning.com
-- admin2@learning.com
-- admin3@learning.com
-- admin4@learning.com
+- admin@learning.com
   and password: **bonjour**
 
   You will thus have Dashboard Admin access:
@@ -60,11 +57,9 @@ On this **Admin Dashboard** you will be able to:
 
 You can sign up with either :
 
-- teacher1@learning.com
-- teacher2@learning.com
-- teacher3@learning.com
-- teacher4@learning.com
+- teacher@learning.com
   and password: **bonjour**
+  
   You can also create your account and select Teacher from the drop-down menu under the password forms. In this case, an administrator will have to validate your registration.
 
 As a **Former**, you will be able to:
@@ -77,11 +72,9 @@ As a **Former**, you will be able to:
 
 You can sign up with either :
 
-- student1@learning.com
-- student2@learning.com
-- student3@learning.com
-- student4@learning.com
+- student@learning.com
   and password: **bonjour**
+  
   You can also create your account and select Learner from the drop-down menu under the password forms. In this case, an administrator will have to validate your registration.
 
 As a **Student**, you will be able to:
